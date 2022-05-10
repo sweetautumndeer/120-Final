@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/index.apple-touch-icon.png-b21a756d869f84af832970a74d8371bc.stex"
+path="res://.import/Bandit2.png-92035996d01a77ba8c90ba17e61adeb0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/index.apple-touch-icon.png"
-dest_files=[ "res://.import/index.apple-touch-icon.png-b21a756d869f84af832970a74d8371bc.stex" ]
+source_file="res://Enemies/Bandit2.png"
+dest_files=[ "res://.import/Bandit2.png-92035996d01a77ba8c90ba17e61adeb0.stex" ]
 
 [params]
 

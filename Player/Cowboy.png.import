@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/index.apple-touch-icon.png-b21a756d869f84af832970a74d8371bc.stex"
+path="res://.import/Cowboy.png-57cbc23ddb549a8ae9b9bed5a0f02370.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/index.apple-touch-icon.png"
-dest_files=[ "res://.import/index.apple-touch-icon.png-b21a756d869f84af832970a74d8371bc.stex" ]
+source_file="res://Player/Cowboy.png"
+dest_files=[ "res://.import/Cowboy.png-57cbc23ddb549a8ae9b9bed5a0f02370.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
