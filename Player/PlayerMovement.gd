@@ -14,6 +14,11 @@ var motion = Vector2.ZERO
 func _physics_process(delta):
 	var x_in = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
+	if x_in == -1:
+		get_node("Sprite").set_flip_h(false)
+	elif x_in == 1:
+		get_node("Sprite").set_flip_h(true)
+	
 	if x_in != 0:
 		motion.x += x_in * ACCELERATION * delta
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
@@ -30,7 +35,3 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP);
 	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
