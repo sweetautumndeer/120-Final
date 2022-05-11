@@ -8,21 +8,18 @@ RichTextLabel/constants/shadow_offset_x = 3
 [node name="MainMenu" type="Node2D"]
 
 [node name="PlayButton" type="Button" parent="."]
-margin_left = 442.0
-margin_top = 290.0
-margin_right = 630.0
-margin_bottom = 323.0
+margin_left = 59.0
+margin_top = 109.0
+margin_right = 247.0
+margin_bottom = 142.0
 text = "Play"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 338.0
-margin_top = 116.0
-margin_right = 668.0
-margin_bottom = 170.0
+margin_left = 75.0
+margin_top = 48.0
+margin_right = 405.0
+margin_bottom = 102.0
 theme = SubResource( 1 )
 text = "Robot Cowboy!!!!!!!!!!!!!
 "
