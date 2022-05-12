@@ -18,6 +18,10 @@ func _physics_process(delta):
 	position.y = lerp(position.y - 2, get_parent().position.y, 0.5)
 	var mouse_pos = get_global_mouse_position()
 	look_at(mouse_pos)
+	if mouse_pos.x < position.x:
+		get_node(".").set_flip_v(true)
+	else:
+		get_node(".").set_flip_v(false)
 	
 	if Input.is_action_just_pressed("fire"):
 		var bullet_instance = bullet.instance()
