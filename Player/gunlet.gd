@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export var speed = 1500
+export var speed = 1000
 
 func _ready():
 	set_as_toplevel(true)
@@ -19,4 +19,11 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Area2D_body_entered(body):
-	queue_free()
+	print(body)
+	if(body.name == "Player"):
+		pass
+	else:
+		print("collision")
+		queue_free()
+
+

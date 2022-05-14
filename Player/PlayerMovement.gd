@@ -9,6 +9,9 @@ const JUMP_FORCE = 150
 
 var motion = Vector2.ZERO
 
+func _ready():
+	get_node("CollisionShape2D")
+
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):
@@ -35,3 +38,8 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, Vector2.UP);
 	
 
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	var spawn = Vector2(50.0, 100.0)
+	set_global_position(spawn)

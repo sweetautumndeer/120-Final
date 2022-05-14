@@ -26,6 +26,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("fire"):
 		var bullet_instance = bullet.instance()
 		bullet_instance.rotation = rotation
+		if get_node(".").flip_v == true:
+			bullet_instance.get_node("Sprite").set_flip_v(true)
 		bullet_instance.global_position = $Position2D.global_position
 		get_parent().add_child(bullet_instance)
 		can_fire = false
