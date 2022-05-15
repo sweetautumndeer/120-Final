@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Concepts.ogg-9967541efd580385963bab25608ffe34.oggstr"
+
+[deps]
+
+source_file="res://Assets/Concepts.ogg"
+dest_files=[ "res://.import/Concepts.ogg-9967541efd580385963bab25608ffe34.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

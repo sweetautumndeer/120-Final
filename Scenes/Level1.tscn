@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Concepts.ogg" type="AudioStream" id=3]
 [ext_resource path="res://LevelAssets/Platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=7]
 
@@ -21,3 +22,7 @@ position = Vector2( 220.254, 99.675 )
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 237, 71.25 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
