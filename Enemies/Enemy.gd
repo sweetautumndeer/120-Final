@@ -10,7 +10,7 @@ var motion = Vector2.ZERO
 var GRAVITY = 250
 export var enemy_health = 5
 
-
+#can only fall, does not move
 func _physics_process(delta):
 	motion.y += GRAVITY * delta
 	
@@ -21,6 +21,7 @@ func _on_Area2D_body_entered(body):
 	print(body)
 
 
+#if area2D node enters enemy hurtbox, will damage health. once no more health, is deleted
 func _on_Area2D_area_entered(area):
 	enemy_health -= 1
 	print(enemy_health)
