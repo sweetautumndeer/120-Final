@@ -14,6 +14,9 @@ margin_right = 247.0
 margin_bottom = 142.0
 text = "Play"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 75.0

@@ -2,11 +2,12 @@ extends KinematicBody2D
 
 
 const ACCELERATION = 512
-const MAX_SPEED = 80
+const MAX_SPEED = 100
 const FRICTION = 0.25
 const GRAVITY = 250
 const JUMP_FORCE = 150
 
+export var health = 3
 var motion = Vector2.ZERO
 
 func _ready():
@@ -20,9 +21,9 @@ func _physics_process(delta):
 	var x_in = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
 	if x_in == -1:
-		get_node("Sprite").set_flip_h(false)
-	elif x_in == 1:
 		get_node("Sprite").set_flip_h(true)
+	elif x_in == 1:
+		get_node("Sprite").set_flip_h(false)
 	
 	#moves at rate of acceleration times delta and maxes out at max speed
 	if x_in != 0:
@@ -47,4 +48,8 @@ func _physics_process(delta):
 #respawns player if off screen
 func _on_VisibilityNotifier2D_screen_exited():
 	var spawn = Vector2(50.0, 100.0)
-	set_global_position(spawn)
+	health -= 1
+	if health > 0:
+		set_global_position(spawn)
+	else:
+		print("game over")
