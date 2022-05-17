@@ -6,6 +6,7 @@
 [node name="Boss Level" type="Node2D"]
 
 [node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bounds"]
 polygon = PoolVector2Array( 3.09784, -0.310638, 5.92946, 176.194, 312.689, 176.666, 313.632, 2.99292, -0.677658, 4.40872, 360.437, -10.7508, 352.018, 194.379, -36.0731, 183.996 )

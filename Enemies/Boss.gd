@@ -32,6 +32,7 @@ func _physics_process(delta):
 
 
 func _on_Area2D_body_entered(body):
+	print(body.name)
 	if body.name == "Bounds":
 		SPEED = -SPEED
 		$Node2D.scale.x = -$Node2D.scale.x
