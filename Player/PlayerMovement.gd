@@ -4,8 +4,8 @@ extends KinematicBody2D
 const ACCELERATION = 512
 const MAX_SPEED = 100
 const FRICTION = 0.25
-const GRAVITY = 250
-const JUMP_FORCE = 150
+const GRAVITY = 350
+const JUMP_FORCE = 170
 
 export var health = 3
 var motion = Vector2.ZERO
