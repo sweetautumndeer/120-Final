@@ -13,7 +13,8 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.40308, 3.22708 )
+position = Vector2( 5.41666, 1.66624 )
+scale = Vector2( 0.433269, 0.433269 )
 texture = ExtResource( 1 )
 flip_h = true
 

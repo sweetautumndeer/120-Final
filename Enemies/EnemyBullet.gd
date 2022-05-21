@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export var speed = 500
+export var speed = 400
 
 func _ready():
 	set_as_toplevel(true)
@@ -11,7 +11,7 @@ func _process(delta):
 	position += (Vector2.LEFT * speed).rotated(rotation) * delta
 	
 func _physics_process(delta):
-	yield(get_tree().create_timer(0.01), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	set_physics_process(false)
 
 
