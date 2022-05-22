@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Level1.gd" type="Script" id=1]
+[ext_resource path="res://LevelScenes/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Concepts.ogg" type="AudioStream" id=3]
 [ext_resource path="res://LevelAssets/Platform.tscn" type="PackedScene" id=4]
@@ -17,7 +17,7 @@ position = Vector2( 35.0115, 143.331 )
 position = Vector2( -225.876, -19.9787 )
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
-position = Vector2( 445.378, 325.306 )
+position = Vector2( 696.921, 343.712 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -31,10 +31,22 @@ position = Vector2( 41.2182, 168.242 )
 position = Vector2( 130.004, 135.425 )
 
 [node name="Platform3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 220.254, 99.675 )
+position = Vector2( 244.64, 212.776 )
+
+[node name="Platform4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 346.894, 171.163 )
+
+[node name="Platform5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 530.364, 99.4591 )
+
+[node name="Platform6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 427.894, 215.327 )
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
-position = Vector2( 237, 71.25 )
+position = Vector2( 250.875, 184.351 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 515.123, 71.8035 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

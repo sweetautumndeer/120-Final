@@ -2,16 +2,19 @@ extends KinematicBody2D
 
 
 const ACCELERATION = 512
-const MAX_SPEED = 100
+const MAX_SPEED = 150
 const FRICTION = 0.25
 const GRAVITY = 350
-const JUMP_FORCE = 170
+const JUMP_FORCE = 190
 
 export var health = 3
 var motion = Vector2.ZERO
+var format_string = "Health = %d"
 
 func _ready():
 	get_node("CollisionShape2D")
+	
+	$Health.text = format_string % health
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,3 +56,12 @@ func _on_VisibilityNotifier2D_screen_exited():
 		set_global_position(spawn)
 	else:
 		print("game over")
+		queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	health -= 1
+	$Health.text = format_string % health
+	if health == 0:
+		print("game over")
+		queue_free()

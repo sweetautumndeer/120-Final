@@ -8,7 +8,7 @@ extends KinematicBody2D
 
 var motion = Vector2.ZERO
 var GRAVITY = 250
-export var enemy_health = 5
+export var enemy_health = 3
 var bullet = preload("res://Player/bullet.tscn")
 var fire_pause
 
@@ -28,7 +28,6 @@ func _on_Area2D_body_entered(body):
 
 #if area2D node enters enemy hurtbox, will damage health. once no more health, is deleted
 func _on_Area2D_area_entered(area):
-	print(area.name)
 	enemy_health -= 1
 	print(enemy_health)
 	if enemy_health == 0:
