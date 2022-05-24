@@ -11,9 +11,11 @@ export var health = 3
 var motion = Vector2.ZERO
 var format_string = "Health = %d"
 
+onready var hitflash = $HitflashAnimation
+
 func _ready():
 	get_node("CollisionShape2D")
-	
+	hitflash.play("Stop")
 	$Health.text = format_string % health
 
 
@@ -52,6 +54,7 @@ func _physics_process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	var spawn = Vector2(50.0, 100.0)
 	health -= 1
+	$Health.text = format_string % health
 	if health > 0:
 		set_global_position(spawn)
 	else:
@@ -61,6 +64,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Area2D_area_entered(area):
 	health -= 1
+	hitflash.play("Start")
 	$Health.text = format_string % health
 	if health == 0:
 		print("game over")
