@@ -11,12 +11,12 @@ position = Vector2( 253.653, 82.3584 )
 collision_layer = 9
 collision_mask = 9
 script = ExtResource( 2 )
+speed = -50
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 5.41666, 1.66624 )
 scale = Vector2( 0.433269, 0.433269 )
 texture = ExtResource( 1 )
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 5.347, 1.6416 )
