@@ -13,8 +13,8 @@ shader_param/active = false
 extents = Vector2( 3.19264, 13.2991 )
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 11.6202
-height = 10.0542
+radius = 11.9885
+height = 4.92159
 
 [sub_resource type="Animation" id=4]
 resource_name = "Start"
@@ -57,7 +57,6 @@ material = SubResource( 1 )
 position = Vector2( -5.96139, -1.76228 )
 scale = Vector2( 0.429688, 0.429688 )
 texture = ExtResource( 2 )
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -6.88092, -1.06267 )

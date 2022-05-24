@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 6.57192
-height = 12.7148
+radius = 6.84251
+height = 19.2966
 
 [node name="Boss" type="KinematicBody2D"]
 collision_layer = 2
