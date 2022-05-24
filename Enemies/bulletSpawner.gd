@@ -25,5 +25,5 @@ func _physics_process(delta):
 		
 		#timer until gun can be fire again
 		can_fire = false
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(4.0), "timeout")
 		can_fire = true;
