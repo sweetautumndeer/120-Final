@@ -36,6 +36,7 @@ func _physics_process(delta):
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 	else:
 		motion.x = lerp(motion.x, 0, FRICTION)
+		
 	
 	#falls at gravity * delta speed
 	motion.y += GRAVITY * delta
@@ -60,6 +61,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	else:
 		print("game over")
 		queue_free()
+		get_tree().change_scene("res://LevelScenes/LoseScreen.tscn")
 
 
 func _on_Area2D_area_entered(area):
@@ -69,3 +71,4 @@ func _on_Area2D_area_entered(area):
 	if health == 0:
 		print("game over")
 		queue_free()
+		get_tree().change_scene("res://LevelScenes/LoseScreen.tscn")
