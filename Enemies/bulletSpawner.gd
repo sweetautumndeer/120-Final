@@ -19,8 +19,7 @@ func _physics_process(delta):
 	#aim at player
 	if player != null:
 		look_at(player.get_position())
-		
-		if can_fire:
+		if can_fire && player.position.x - $"..".position.x > -1 * get_viewport().size.x / 6 && $"..".position.x - player.position.x < get_viewport().size.x / 6:
 			var bullet_instance = bullet.instance()
 			bullet_instance.rotation = rotation
 			
