@@ -17,21 +17,22 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#aim at player
-	look_at(player.get_position())
-	
-	if can_fire:
-		var bullet_instance = bullet.instance()
-		bullet_instance.rotation = rotation
+	if player != null:
+		look_at(player.get_position())
 		
-		#flips bullet if gun is flipped
-		if get_node("../AnimatedSprite").flip_v == true:
-			bullet_instance.get_node("Sprite").set_flip_v(false)
-		
-		#creates instance at gun position
-		bullet_instance.global_position = $".".global_position
-		get_parent().add_child(bullet_instance)
-		
-		#timer until gun can be fire again
-		can_fire = false
-		yield(get_tree().create_timer(2.0), "timeout")
-		can_fire = true;
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node("../AnimatedSprite").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(false)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $".".global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(2.0), "timeout")
+			can_fire = true;
