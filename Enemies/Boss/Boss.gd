@@ -31,18 +31,27 @@ func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
+			motion.x = 0
+			motion.y = 0
 			rotation = lerp(rotation, 0, WEIGHT)
 			position.x = lerp(position.x, idlePos.position.x, WEIGHT)
 			position.y = lerp(position.y, idlePos.position.y, WEIGHT)
+			if nearPosition(position, idlePos.position):
+				position = idlePos.position
 		bossState.TRASHSHOT:
+			motion.x = 0
+			motion.y = 0
 			position.x = lerp(position.x, shootPos.position.x, WEIGHT)
 			position.y = lerp(position.y, shootPos.position.y, WEIGHT)
+			if nearPosition(position, shootPos.position):
+				position = shootPos.position
 			
 			#aim at player
 			look_at(player.get_position())
 			rotation += PI
-	
-			if can_fire:
+			
+			# only fires when in position
+			if can_fire && nearPosition(position, shootPos.position):
 				var bullet_instance = bullet.instance()
 				bullet_instance.rotation = rotation
 		
@@ -82,7 +91,9 @@ func _process(delta):
 		currentState = bossState.IDLE
 		t = 0;
 
-
+# check if the two positions are close enough to each other to basically be the same
+func nearPosition(pos1, pos2):
+	return pos1.x < pos2.x + 0.01 && pos1.x > pos2.x - 0.01 && pos1.y < pos2.y + 0.01 && pos1.y > pos2.y - 0.01
 
 func _on_Area2D_body_entered(body):
 	print(body.name)
