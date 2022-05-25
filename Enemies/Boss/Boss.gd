@@ -40,11 +40,12 @@ func _physics_process(delta):
 			
 			#aim at player
 			look_at(player.get_position())
+			var bullet_rotation = rotation
 			rotation += PI
 	
 			if can_fire:
 				var bullet_instance = bullet.instance()
-				bullet_instance.rotation = rotation
+				bullet_instance.rotation = bullet_rotation
 		
 				#creates instance at gun position
 				bullet_instance.global_position = $".".global_position
