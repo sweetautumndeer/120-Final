@@ -19,8 +19,11 @@ position = Vector2( 1.19209e-07, -2.38419e-07 )
 
 [node name="Sprite" type="Sprite" parent="Node2D"]
 position = Vector2( 1.88989, -3.93726 )
+rotation = 3.14159
 scale = Vector2( 1.92525, 1.92525 )
 texture = ExtResource( 1 )
+flip_h = true
+flip_v = true
 
 [node name="Area2D" type="Area2D" parent="Node2D"]
 position = Vector2( -1.19209e-07, 2.38419e-07 )

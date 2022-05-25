@@ -16,3 +16,9 @@ position = Vector2( 25.8356, 153.761 )
 
 [node name="Boss" parent="." instance=ExtResource( 2 )]
 position = Vector2( 235.969, 157.627 )
+
+[node name="IdlePosition" type="Position2D" parent="."]
+position = Vector2( 160, 49 )
+
+[node name="ShootPosition" type="Position2D" parent="."]
+position = Vector2( 278, 50 )
