@@ -13,7 +13,7 @@ onready var sprite = get_node("Node2D/Sprite")
 onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
 onready var player = get_node("../Player")
-var bullet = preload("res://Enemies/EnemyBullet.tscn")
+var bullet = preload("res://Enemies/Boss/TrashShot.tscn")
 enum bossState {
 	IDLE, #slowly moving around, not attacking
 	TRASHSHOT, #shooting trash at the player
@@ -40,12 +40,11 @@ func _physics_process(delta):
 			
 			#aim at player
 			look_at(player.get_position())
-			var bullet_rotation = rotation
 			rotation += PI
 	
 			if can_fire:
 				var bullet_instance = bullet.instance()
-				bullet_instance.rotation = bullet_rotation
+				bullet_instance.rotation = rotation
 		
 				#creates instance at gun position
 				bullet_instance.global_position = $".".global_position
