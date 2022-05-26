@@ -6,7 +6,7 @@ var WEIGHT = 0.1
 var motion = Vector2.ZERO
 var GRAVITY = 10
 var MAX_SPEED = 300
-var t = 0;
+var t = 0
 var can_fire = true
 export var BOSSHEALTH = 100
 var format_string = "Health = %d"
@@ -35,20 +35,23 @@ func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
-			$Node2D.scale.x = initialScale
+			$HitBox.monitorable = false
 			motion.x = 0
 			motion.y = 0
 			rotation = lerp(rotation, 0, WEIGHT)
 			position.x = lerp(position.x, idlePos.position.x, WEIGHT)
 			position.y = lerp(position.y, idlePos.position.y, WEIGHT)
 			if nearPosition(position, idlePos.position):
+				$HitBox.monitorable = true
 				position = idlePos.position
 		bossState.TRASHSHOT:
+			$HitBox.monitorable = false
 			motion.x = 0
 			motion.y = 0
 			position.x = lerp(position.x, shootPos.position.x, WEIGHT)
 			position.y = lerp(position.y, shootPos.position.y, WEIGHT)
 			if nearPosition(position, shootPos.position):
+				$HitBox.monitorable = true
 				position = shootPos.position
 			
 			#aim at player
@@ -69,6 +72,8 @@ func _physics_process(delta):
 				yield(get_tree().create_timer(2.5), "timeout")
 				can_fire = true;
 		bossState.SWEEP:
+			
+				
 			rotation = lerp(rotation, 0, WEIGHT)
 			motion.x += -SPEED * delta
 			print(motion.x)
@@ -105,7 +110,7 @@ func _on_Area2D_body_entered(body):
 	if body.name == "WallBounds":
 		SPEED = -SPEED
 		
-		$Node2D.scale.x = -$Node2D.scale.x
+		#$Node2D.scale.x = -$Node2D.scale.x
 
 
 func _on_HitBox_area_entered(area):

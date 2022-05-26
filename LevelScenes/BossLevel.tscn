@@ -28,4 +28,4 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallBounds"]
-polygon = PoolVector2Array( -1.1918, 0.172192, 0.00115967, 175.836, -16.1755, 24.433, -19.0863, -2.81022, 336.417, -9.66977, 314.944, 175.538, 319.418, -0.424292 )
+polygon = PoolVector2Array( -1.1918, 0.172192, 0.00115967, 175.836, -16.1755, 24.433, -19.0863, -2.81022, 336.417, -9.66977, 320, 177, 319.418, -0.424292 )
