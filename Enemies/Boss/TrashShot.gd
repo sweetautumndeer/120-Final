@@ -39,8 +39,8 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_body_entered(body):
 	print(body.name)
-	if body.name == "Bounds" && not on_floor:
+	if body.name == "FloorBounds" && not on_floor:
 		on_floor = true
 		check_player_pos()
 	else:
-		queue_free()
+		pass

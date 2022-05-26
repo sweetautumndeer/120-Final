@@ -5,11 +5,11 @@
 
 [node name="Boss Level" type="Node2D"]
 
-[node name="Bounds" type="StaticBody2D" parent="."]
+[node name="FloorBounds" type="StaticBody2D" parent="."]
 collision_layer = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bounds"]
-polygon = PoolVector2Array( 3.09784, -0.310638, 5.92946, 176.194, 312.689, 176.666, 313.632, 2.99292, 3, -2, 360.437, -10.7508, 352.018, 194.379, -36.0731, 183.996 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloorBounds"]
+polygon = PoolVector2Array( 2.38709, 175.538, 5.92946, 176.194, 312.689, 176.666, 324.189, 180.012, 346.558, 173.45, 348.944, 189.555, 341.786, 194.626, -36.0731, 183.996 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 25.8356, 153.761 )
@@ -22,3 +22,10 @@ position = Vector2( 157, 50 )
 
 [node name="ShootPosition" type="Position2D" parent="."]
 position = Vector2( 275, 40 )
+
+[node name="WallBounds" type="StaticBody2D" parent="."]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallBounds"]
+polygon = PoolVector2Array( -1.1918, 0.172192, 0.00115967, 175.836, -16.1755, 24.433, -19.0863, -2.81022, 336.417, -9.66977, 314.944, 175.538, 319.418, -0.424292 )

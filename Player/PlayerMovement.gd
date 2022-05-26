@@ -67,6 +67,13 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Area2D_area_entered(area):
 	health -= 1
 	hitflash.play("Start")
+	if area.position.x > position.x:
+		motion.x -= 300
+		motion.y -= 100
+	else:
+		motion.x += 300
+		motion.y -= 100
+	
 	$Health.text = format_string % health
 	if health == 0:
 		print("game over")

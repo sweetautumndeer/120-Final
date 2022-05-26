@@ -1,19 +1,22 @@
 extends KinematicBody2D
 
 
-var SPEED = 100
+var SPEED = 300
 var WEIGHT = 0.1
 var motion = Vector2.ZERO
 var GRAVITY = 10
-var MAX_SPEED = 200
+var MAX_SPEED = 300
 var t = 0;
 var can_fire = true
+export var BOSSHEALTH = 100
+var format_string = "Health = %d"
 
 onready var sprite = get_node("Node2D/Sprite")
 onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
 onready var player = get_node("../Player")
 var bullet = preload("res://Enemies/Boss/TrashShot.tscn")
+var initialScale
 enum bossState {
 	IDLE, #slowly moving around, not attacking
 	TRASHSHOT, #shooting trash at the player
@@ -25,12 +28,14 @@ var currentState = bossState.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Health.text = format_string % BOSSHEALTH
+	initialScale = $Node2D.scale.x
 
 func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
+			$Node2D.scale.x = initialScale
 			motion.x = 0
 			motion.y = 0
 			rotation = lerp(rotation, 0, WEIGHT)
@@ -66,6 +71,7 @@ func _physics_process(delta):
 		bossState.SWEEP:
 			rotation = lerp(rotation, 0, WEIGHT)
 			motion.x += -SPEED * delta
+			print(motion.x)
 			motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 	
 			motion.y += GRAVITY
@@ -96,7 +102,15 @@ func nearPosition(pos1, pos2):
 	return pos1.x < pos2.x + 0.01 && pos1.x > pos2.x - 0.01 && pos1.y < pos2.y + 0.01 && pos1.y > pos2.y - 0.01
 
 func _on_Area2D_body_entered(body):
-	print(body.name)
-	if body.name == "Bounds":
+	if body.name == "WallBounds":
 		SPEED = -SPEED
+		
 		$Node2D.scale.x = -$Node2D.scale.x
+
+
+func _on_HitBox_area_entered(area):
+	if area.name == "Bullet":
+		BOSSHEALTH -= 1
+		$Health.text = format_string % BOSSHEALTH
+		if BOSSHEALTH <= 0:
+			queue_free()
