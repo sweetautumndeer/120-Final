@@ -4,11 +4,11 @@
 [ext_resource path="res://Player/Gun.gd" type="Script" id=2]
 
 [node name="Gun" type="Sprite"]
-position = Vector2( 1.63637, 1.2049 )
-scale = Vector2( 0.486823, 0.486823 )
+position = Vector2( 1.97406, 1.65516 )
+scale = Vector2( 0.543105, 0.543105 )
 texture = ExtResource( 1 )
 offset = Vector2( 10, 0 )
 script = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 2.17085, -4.17361 )
+position = Vector2( -3.36132, 1.63324 )
