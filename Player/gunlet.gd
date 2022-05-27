@@ -32,5 +32,5 @@ func _on_Area2D_body_entered(body):
 
 
 
-func _on_Bullet_area_entered(area):
+func _on_Bullet_area_entered(_area):
 	queue_free()
