@@ -8,7 +8,7 @@ var GRAVITY = 10
 var MAX_SPEED = 300
 var t = 0
 var can_fire = true
-export var BOSSHEALTH = 100
+export var BOSSHEALTH = 25
 var format_string = "Health = %d"
 
 onready var sprite = get_node("Node2D/Sprite")
