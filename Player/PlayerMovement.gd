@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 
-const ACCELERATION = 512
-const MAX_SPEED = 150
+const ACCELERATION = 300
+const MAX_SPEED = 125
 const FRICTION = 0.25
 const GRAVITY = 350
 const JUMP_FORCE = 190
@@ -26,9 +26,13 @@ func _physics_process(delta):
 	var x_in = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
 	if x_in == -1:
-		get_node("Sprite").set_flip_h(true)
+		get_node("AnimatedSprite").set_flip_h(true)
+		get_node("AnimatedSprite").play("run")
 	elif x_in == 1:
-		get_node("Sprite").set_flip_h(false)
+		get_node("AnimatedSprite").set_flip_h(false)
+		get_node("AnimatedSprite").play("run")
+	else:
+		get_node("AnimatedSprite").play("idle")
 	
 	#moves at rate of acceleration times delta and maxes out at max speed
 	if x_in != 0:

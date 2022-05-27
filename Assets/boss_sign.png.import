@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CactusCowboyHat.png-fcfb973aea66633b066a7acd4e58cda4.stex"
+path="res://.import/boss_sign.png-03d79e49aa11c5a511db1d653b59f9ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CactusCowboyHat.png"
-dest_files=[ "res://.import/CactusCowboyHat.png-fcfb973aea66633b066a7acd4e58cda4.stex" ]
+source_file="res://Assets/boss_sign.png"
+dest_files=[ "res://.import/boss_sign.png-03d79e49aa11c5a511db1d653b59f9ed.stex" ]
 
 [params]
 

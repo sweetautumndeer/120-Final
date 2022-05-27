@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CactusCowboyHat.png-fcfb973aea66633b066a7acd4e58cda4.stex"
+path="res://.import/cowboy_runcycle6.png-afe9f1d896eb64f6708d005557c17b83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CactusCowboyHat.png"
-dest_files=[ "res://.import/CactusCowboyHat.png-fcfb973aea66633b066a7acd4e58cda4.stex" ]
+source_file="res://Player/cowboy_runcycle6.png"
+dest_files=[ "res://.import/cowboy_runcycle6.png-afe9f1d896eb64f6708d005557c17b83.stex" ]
 
 [params]
 
