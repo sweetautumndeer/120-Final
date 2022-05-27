@@ -54,8 +54,8 @@ texture = ExtResource( 9 )
 offset = Vector2( 66, -9 )
 
 [node name="Cactus3" type="Sprite" parent="."]
-position = Vector2( 691, 103 )
-scale = Vector2( 0.828125, 0.8125 )
+position = Vector2( 692.75, 104.5 )
+scale = Vector2( 0.773438, 0.765625 )
 texture = ExtResource( 9 )
 flip_h = true
 
@@ -65,8 +65,8 @@ scale = Vector2( 0.859375, 0.84375 )
 texture = ExtResource( 10 )
 
 [node name="BossSign" type="Sprite" parent="."]
-position = Vector2( 1045.5, 101.5 )
-scale = Vector2( 0.515624, 0.515624 )
+position = Vector2( 1045, 105 )
+scale = Vector2( 0.40625, 0.421874 )
 texture = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
