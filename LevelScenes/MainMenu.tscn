@@ -1,11 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=1]
-
-[sub_resource type="Theme" id=1]
-RichTextLabel/constants/shadow_offset_x = 3
+[ext_resource path="res://Assets/level_background.png" type="Texture" id=2]
 
 [node name="MainMenu" type="Node2D"]
+
+[node name="TitleScreen" type="Sprite" parent="."]
+position = Vector2( 152, 94 )
+scale = Vector2( 0.568333, 0.576562 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 54.5096, 128.585, 600.101, 320.933 )
 
 [node name="PlayButton" type="Button" parent="."]
 margin_left = 59.0
@@ -14,17 +19,13 @@ margin_right = 247.0
 margin_bottom = 142.0
 text = "Play"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 75.0
-margin_top = 48.0
-margin_right = 405.0
-margin_bottom = 102.0
-theme = SubResource( 1 )
-text = "Robot Cowboy!!!!!!!!!!!!!
+margin_left = 102.0
+margin_top = 47.0
+margin_right = 302.0
+margin_bottom = 101.0
+text = "Robo Gunslinger
 "
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]

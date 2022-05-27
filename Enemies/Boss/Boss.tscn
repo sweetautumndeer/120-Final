@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemies/Bandit.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.gd" type="Script" id=2]
+[ext_resource path="res://Assets/gun.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.5, 6.89576 )
@@ -27,6 +28,13 @@ rotation = 3.14159
 scale = Vector2( 1.92525, 1.92525 )
 texture = ExtResource( 1 )
 flip_v = true
+
+[node name="Gun" type="Sprite" parent="Node2D/Sprite"]
+position = Vector2( 22.2776, -8.27796 )
+rotation = -3.14159
+scale = Vector2( 0.908973, 0.973899 )
+texture = ExtResource( 3 )
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="Node2D"]
 position = Vector2( -1.19209e-07, 2.38419e-07 )
