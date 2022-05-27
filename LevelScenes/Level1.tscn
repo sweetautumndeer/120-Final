@@ -17,7 +17,7 @@ script = ExtResource( 1 )
 position = Vector2( 142, 117 )
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
-position = Vector2( -27, -6 )
+position = Vector2( 1, -7 )
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2( 1474, 254 )

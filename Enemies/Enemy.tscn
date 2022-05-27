@@ -13,12 +13,12 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 3.94145
-height = 16.3767
+radius = 3.77483
+height = 20.3767
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 7.91488
-height = 6.47571
+height = 10.9596
 
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 103.563, 18.5406 )
@@ -29,7 +29,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.07659, 1.77062 )
 rotation = -6.28319
-scale = Vector2( 0.364658, 0.366195 )
+scale = Vector2( 0.43, 0.43 )
 frames = SubResource( 1 )
 flip_h = true
 
