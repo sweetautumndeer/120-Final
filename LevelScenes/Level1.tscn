@@ -54,7 +54,7 @@ texture = ExtResource( 9 )
 offset = Vector2( 66, -9 )
 
 [node name="Cactus3" type="Sprite" parent="."]
-position = Vector2( 692.75, 104.5 )
+position = Vector2( 723, 104 )
 scale = Vector2( 0.773438, 0.765625 )
 texture = ExtResource( 9 )
 flip_h = true
@@ -65,7 +65,7 @@ scale = Vector2( 0.859375, 0.84375 )
 texture = ExtResource( 10 )
 
 [node name="BossSign" type="Sprite" parent="."]
-position = Vector2( 1045, 105 )
+position = Vector2( 1242, 68 )
 scale = Vector2( 0.40625, 0.421874 )
 texture = ExtResource( 11 )
 
@@ -128,10 +128,16 @@ position = Vector2( 1024, 128 )
 position = Vector2( 594, 136 )
 
 [node name="Platform23" parent="." instance=ExtResource( 4 )]
-position = Vector2( 563, 106 )
+position = Vector2( 563, 109 )
+
+[node name="Platform24" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1133, 114 )
+
+[node name="Platform25" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1241, 91 )
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
-position = Vector2( 754, 110 )
+position = Vector2( 669, 109 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1010, 101 )
@@ -141,6 +147,6 @@ stream = ExtResource( 3 )
 autoplay = true
 
 [node name="BossPortal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1179, 161 )
+position = Vector2( 1382, 128 )
 
 [editable path="Camera2D"]

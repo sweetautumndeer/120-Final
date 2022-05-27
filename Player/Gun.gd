@@ -15,8 +15,10 @@ func _ready():
 
 func _physics_process(delta):
 	#gun trails slightly behind player to create feeling of separate objects
-	position.x = lerp(position.x + 5, get_parent().position.x, 0.5)
-	position.y = lerp(position.y - 2, get_parent().position.y, 0.5)
+	#position.x = lerp(position.x + 5, get_parent().position.x, 0.5)
+	#position.y = lerp(position.y - 2, get_parent().position.y, 0.5)
+	position.x = get_parent().position.x + 5
+	position.y = get_parent().position.y - 2
 	
 	#gets mouse position and rotates gun based on it
 	var mouse_pos = get_global_mouse_position()

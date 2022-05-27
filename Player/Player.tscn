@@ -89,7 +89,7 @@ frames = SubResource( 6 )
 animation = "run"
 
 [node name="Gun" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1.97406, 1.65515 )
+position = Vector2( 3.9885, 0.669006 )
 z_as_relative = false
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
