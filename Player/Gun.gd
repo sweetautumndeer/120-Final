@@ -7,10 +7,15 @@ extends Sprite
 
 var can_fire = true;
 var bullet = preload("res://Player/PlayerBullet.tscn")
+var using_mouse = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_as_toplevel(true)
+	
+func _input(event):
+	if event is InputEventMouseMotion and event.relative:
+		using_mouse = true
 
 
 func _physics_process(delta):
@@ -20,11 +25,16 @@ func _physics_process(delta):
 	position.x = get_parent().position.x + 5
 	position.y = get_parent().position.y - 2
 	
-	#gets mouse position and rotates gun based on it
+	print(using_mouse)
+		
 	var mouse_pos = get_global_mouse_position()
-	look_at(mouse_pos)
+	
+	#gets mouse position and rotates gun based on it
+	if using_mouse:
+		look_at(mouse_pos)
 	
 	if Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_right"):
+		using_mouse = false
 		get_node(".").set_flip_v(false)
 		look_at(position + Vector2.DOWN + Vector2.RIGHT)
 		
@@ -46,7 +56,8 @@ func _physics_process(delta):
 			can_fire = true;
 		
 	elif Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_left") :
-		get_node(".").set_flip_v(false)
+		using_mouse = false
+		get_node(".").set_flip_v(true)
 		look_at(position + Vector2.DOWN + Vector2.LEFT)
 		
 		if can_fire:
@@ -67,6 +78,7 @@ func _physics_process(delta):
 			can_fire = true;
 		
 	elif Input.is_action_pressed("arrow_up") and Input.is_action_pressed("arrow_right") :
+		using_mouse = false
 		get_node(".").set_flip_v(false)
 		look_at(position + Vector2.UP + Vector2.RIGHT)
 		
@@ -88,7 +100,8 @@ func _physics_process(delta):
 			can_fire = true;
 		
 	elif Input.is_action_pressed("arrow_up") and Input.is_action_pressed("arrow_left"):
-		get_node(".").set_flip_v(false)
+		using_mouse = false
+		get_node(".").set_flip_v(true)
 		look_at(position + Vector2.UP + Vector2.LEFT)
 		if can_fire:
 			var bullet_instance = bullet.instance()
@@ -108,6 +121,7 @@ func _physics_process(delta):
 			can_fire = true;
 	
 	elif Input.is_action_pressed("arrow_right") :
+		using_mouse = false
 		get_node(".").set_flip_v(false)
 		look_at(position + Vector2.RIGHT)
 		if can_fire:
@@ -128,6 +142,7 @@ func _physics_process(delta):
 			can_fire = true;
 		
 	elif Input.is_action_pressed("arrow_left"):
+		using_mouse = false
 		get_node(".").set_flip_v(true)
 		look_at(position + Vector2.LEFT)
 		if can_fire:
@@ -149,6 +164,7 @@ func _physics_process(delta):
 		
 		
 	elif Input.is_action_pressed("arrow_up"):
+		using_mouse = false
 		get_node(".").set_flip_v(false)
 		look_at(position + Vector2.UP)
 		
@@ -170,6 +186,7 @@ func _physics_process(delta):
 			can_fire = true;
 		
 	elif Input.is_action_pressed("arrow_down"):
+		using_mouse = false
 		get_node(".").set_flip_v(false)
 		look_at(position + Vector2.DOWN)
 		
