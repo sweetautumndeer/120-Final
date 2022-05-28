@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://LevelAssets/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Cowboy.png" type="Texture" id=2]
@@ -66,6 +66,10 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 8.0
+height = 12.0
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 35.0115, 143.331 )
 script = ExtResource( 4 )
@@ -110,6 +114,14 @@ margin_bottom = -23.2999
 [node name="HitflashAnimation" type="AnimationPlayer" parent="."]
 anims/Start = SubResource( 4 )
 anims/Stop = SubResource( 5 )
+
+[node name="Triggerbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggerbox"]
+position = Vector2( -6.0115, -2.33099 )
+shape = SubResource( 8 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Area2D_area_entered"]
