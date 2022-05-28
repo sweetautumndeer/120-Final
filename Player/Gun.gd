@@ -6,7 +6,7 @@ extends Sprite
 # var b = "text"
 
 var can_fire = true;
-var bullet = preload("res://Player/bullet.tscn")
+var bullet = preload("res://Player/PlayerBullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

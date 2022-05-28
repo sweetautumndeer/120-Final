@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export var speed = 1000
+export var speed = 500
 
 func _ready():
 	set_as_toplevel(true)
@@ -15,22 +15,11 @@ func _physics_process(_delta):
 	set_physics_process(false)
 
 
-#delete once leaves screen
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-
-
-#if hits area that is not player, will free itself
-func _on_Area2D_body_entered(body):
 	
-	if(body.name == "Player"):
-		pass
-	else:
-		
-		queue_free()
+	
 
 
-
-
-func _on_Bullet_area_entered(_area):
+func _on_PlayerBullet_area_entered(area):
 	queue_free()
