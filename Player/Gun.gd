@@ -24,6 +24,176 @@ func _physics_process(delta):
 	var mouse_pos = get_global_mouse_position()
 	look_at(mouse_pos)
 	
+	if Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_right"):
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.DOWN + Vector2.RIGHT)
+		
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+	elif Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_left") :
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.DOWN + Vector2.LEFT)
+		
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+	elif Input.is_action_pressed("arrow_up") and Input.is_action_pressed("arrow_right") :
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.UP + Vector2.RIGHT)
+		
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+	elif Input.is_action_pressed("arrow_up") and Input.is_action_pressed("arrow_left"):
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.UP + Vector2.LEFT)
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+	
+	elif Input.is_action_pressed("arrow_right") :
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.RIGHT)
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+	elif Input.is_action_pressed("arrow_left"):
+		get_node(".").set_flip_v(true)
+		look_at(position + Vector2.LEFT)
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+		
+	elif Input.is_action_pressed("arrow_up"):
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.UP)
+		
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+	elif Input.is_action_pressed("arrow_down"):
+		get_node(".").set_flip_v(false)
+		look_at(position + Vector2.DOWN)
+		
+		if can_fire:
+			var bullet_instance = bullet.instance()
+			bullet_instance.rotation = rotation
+			
+			#flips bullet if gun is flipped
+			if get_node(".").flip_v == true:
+				bullet_instance.get_node("Sprite").set_flip_v(true)
+			
+			#creates instance at gun position
+			bullet_instance.global_position = $Position2D.global_position
+			get_parent().add_child(bullet_instance)
+			
+			#timer until gun can be fire again
+			can_fire = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			can_fire = true;
+		
+	
+
+
+
 	#flips gun to face the mouse sprite direction
 	if mouse_pos.x < position.x:
 		get_node(".").set_flip_v(true)

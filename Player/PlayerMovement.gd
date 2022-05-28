@@ -58,7 +58,7 @@ func _physics_process(delta):
 #respawns player if off screen
 func _on_VisibilityNotifier2D_screen_exited():
 	var spawn = Vector2(50.0, 100.0)
-	health -= 1
+	
 	$Health.text = format_string % health
 	if health > 0:
 		set_global_position(spawn)
@@ -69,6 +69,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Area2D_area_entered(area):
+	if area.name == "BossPortal":
+		pass
 	health -= 1
 	hitflash.play("Start")
 	if area.position.x > position.x:

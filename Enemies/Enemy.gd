@@ -9,7 +9,7 @@ extends KinematicBody2D
 var motion = Vector2.ZERO
 var GRAVITY = 250
 export var enemy_health = 3
-var bullet = preload("res://Player/bullet.tscn")
+var bullet = preload("res://Player/PlayerBullet.tscn")
 var fire_pause
 
 #can only fall, does not move
