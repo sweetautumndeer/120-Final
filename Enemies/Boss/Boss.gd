@@ -8,13 +8,15 @@ var GRAVITY = 10
 var MAX_SPEED = 300
 var t = 0
 var can_fire = true
-export var BOSSHEALTH = 25
+export var BOSSHEALTH = 50
 var format_string = "Health = %d"
+
 
 onready var sprite = get_node("Node2D/Sprite")
 onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
 onready var player = get_node("../Player")
+onready var hitflash = $AnimationPlayer
 var bullet = preload("res://Enemies/Boss/TrashShot.tscn")
 var initialScale
 enum bossState {
@@ -30,6 +32,7 @@ var currentState = bossState.IDLE
 func _ready():
 	$Health.text = format_string % BOSSHEALTH
 	initialScale = $Node2D.scale.x
+	hitflash.play("Stop")
 
 func _physics_process(delta):
 	#main state machine
@@ -114,8 +117,9 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_HitBox_area_entered(area):
-	if area.name == "Bullet":
+	if area.name == "PlayerBullet":
 		BOSSHEALTH -= 1
+		hitflash.play("Start")
 		$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
 			queue_free()

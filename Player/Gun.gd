@@ -25,7 +25,7 @@ func _physics_process(delta):
 	position.x = get_parent().position.x + 5
 	position.y = get_parent().position.y - 2
 	
-	print(using_mouse)
+
 		
 	var mouse_pos = get_global_mouse_position()
 	
