@@ -12,30 +12,42 @@ var motion = Vector2.ZERO
 var format_string = "Health = %d"
 
 onready var hitflash = $HitflashAnimation
+onready var sprite = $AnimatedSprite
 onready var jumpSFX = $Jump
 onready var landSFX = $Land
 var jumped = false
+var footstepSFXPlayed = false
 
 func _ready():
 	get_node("CollisionShape2D")
 	hitflash.play("Stop")
 	$Health.text = format_string % health
 
-
-# Called when the node enters the scene tree for the first time.
+func playFootsteps():
+	if not footstepSFXPlayed and is_on_floor():
+		$"Footsteps/Footsteps".play()
+		footstepSFXPlayed = true
 
 func _physics_process(delta):
 	#moves player based on input strength
 	var x_in = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
 	if x_in == -1:
-		get_node("AnimatedSprite").set_flip_h(true)
-		get_node("AnimatedSprite").play("run")
+		sprite.set_flip_h(true)
+		sprite.play("run")
+		if sprite.frame == 2 or sprite.frame == 5:
+			playFootsteps()
+		else:
+			footstepSFXPlayed = false
 	elif x_in == 1:
-		get_node("AnimatedSprite").set_flip_h(false)
-		get_node("AnimatedSprite").play("run")
+		sprite.set_flip_h(false)
+		sprite.play("run")
+		if sprite.frame == 2 or sprite.frame == 5:
+			playFootsteps()
+		else:
+			footstepSFXPlayed = false
 	else:
-		get_node("AnimatedSprite").play("idle")
+		sprite.play("idle")
 	
 	#moves at rate of acceleration times delta and maxes out at max speed
 	if x_in != 0:

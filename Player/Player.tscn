@@ -100,6 +100,7 @@ scale = Vector2( 0.429688, 0.429688 )
 z_as_relative = false
 frames = SubResource( 4 )
 animation = "run"
+frame = 2
 
 [node name="Gun" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3.9885, 0.669006 )
@@ -141,9 +142,9 @@ stream = ExtResource( 12 )
 [node name="Land" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 
-[node name="Node" type="Node" parent="."]
+[node name="Footsteps" type="Node" parent="."]
 
-[node name="Footsteps" type="AudioStreamPlayer" parent="Node"]
+[node name="Footsteps" type="AudioStreamPlayer" parent="Footsteps"]
 stream = ExtResource( 14 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
