@@ -109,5 +109,5 @@ func _physics_process(delta):
 		get_node(".").set_flip_v(false)
 	
 	#if fire is inputted using mouse click creates bullet instance at guns rotation
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_pressed("fire"):
 		fire()

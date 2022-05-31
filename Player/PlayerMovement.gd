@@ -4,7 +4,7 @@ extends KinematicBody2D
 const ACCELERATION = 300
 const MAX_SPEED = 200
 const FRICTION = 0.25
-const GRAVITY = 350
+const GRAVITY = 300
 const JUMP_FORCE = 190
 
 export var health = 3
@@ -15,6 +15,7 @@ onready var hitflash = $HitflashAnimation
 onready var sprite = $AnimatedSprite
 onready var jumpSFX = $Jump
 onready var landSFX = $Land
+var can_gunjump = true
 var jumped = false
 var footstepSFXPlayed = false
 
@@ -62,6 +63,7 @@ func _physics_process(delta):
 	
 	#jumps if player is on floor
 	if is_on_floor():
+		can_gunjump = true
 		if jumped:
 			landSFX.play()
 			jumped = false
@@ -69,9 +71,13 @@ func _physics_process(delta):
 			jumpSFX.play()
 			motion.y = -JUMP_FORCE
 			jumped = true
-			
-	if Input.is_action_just_pressed("fire"):
+	
+	if Input.is_action_just_released("jump") && motion.y < 0:
+		motion.y = 0
+	
+	if Input.is_action_just_pressed("fire") and not is_on_floor() and can_gunjump:
 		print($Gun.rotation_degrees + 180)
+		can_gunjump = false
 		motion = Vector2(-1, 0).rotated($Gun.rotation) * MAX_SPEED
 	
 	#performs movement of player

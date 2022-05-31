@@ -117,6 +117,7 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_HitBox_area_entered(area):
+	print("collision")
 	if area.name == "PlayerBullet":
 		BOSSHEALTH -= 1
 		hitflash.play("Start")
