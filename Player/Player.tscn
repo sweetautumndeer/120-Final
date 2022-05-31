@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://LevelAssets/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Cowboy.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://Player/cowboy_runcycle5.png" type="Texture" id=8]
 [ext_resource path="res://Player/cowboy_runcycle6.png" type="Texture" id=9]
 [ext_resource path="res://Player/cowboy_runcycle4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/SFX/Gunshot.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/SFX/Jump.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/SFX/Land.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Assets/SFX/Footstep1.ogg" type="AudioStream" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -101,6 +105,9 @@ animation = "run"
 position = Vector2( 3.9885, 0.669006 )
 z_as_relative = false
 
+[node name="Gunshot" type="AudioStreamPlayer" parent="Gun"]
+stream = ExtResource( 11 )
+
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -6.8651, -2.09193 )
 
@@ -127,6 +134,17 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggerbox"]
 position = Vector2( -6.0115, -2.33099 )
 shape = SubResource( 8 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Land" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource( 14 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Area2D_area_entered"]

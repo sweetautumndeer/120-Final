@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=2]
 [ext_resource path="res://Assets/PlayButton.png" type="Texture" id=3]
 [ext_resource path="res://Assets/PlayButtonHover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/SFX/MenuHover.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/MenuClick.ogg" type="AudioStream" id=6]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -21,9 +23,12 @@ margin_bottom = 177.0
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="MenuHover" type="AudioStreamPlayer" parent="PlayButton"]
+stream = ExtResource( 5 )
+
+[node name="MenuClick" type="AudioStreamPlayer" parent="PlayButton"]
+stream = ExtResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 17.0
@@ -33,4 +38,5 @@ margin_bottom = 79.0
 text = "Robo Gunslinger
 "
 
+[connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_PlayButton_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]

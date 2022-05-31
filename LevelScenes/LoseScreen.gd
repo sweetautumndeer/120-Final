@@ -13,8 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.get_action_strength("jump"):
-		get_tree().change_scene("res://LevelScenes/Level1.tscn")
+	pass
 
 
 func _on_RetryButton_pressed():
