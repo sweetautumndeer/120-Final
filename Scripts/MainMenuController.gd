@@ -12,4 +12,10 @@ func _ready():
 
 #changes scene on button press
 func _on_PlayButton_pressed():
+	$MenuClick.play()
+	yield(get_tree().create_timer(2), "timeout")
 	get_tree().change_scene("res://LevelScenes/Level1.tscn")
+
+
+func _on_PlayButton_mouse_entered():
+	$MenuHover.play()
