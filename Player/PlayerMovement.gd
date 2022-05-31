@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 const ACCELERATION = 300
-const MAX_SPEED = 125
+const MAX_SPEED = 200
 const FRICTION = 0.25
 const GRAVITY = 350
 const JUMP_FORCE = 190
@@ -49,9 +49,15 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			motion.y = -JUMP_FORCE
+			
+	if Input.is_action_just_pressed("fire"):
+		print($Gun.rotation_degrees + 180)
+		motion = Vector2(-1, 0).rotated($Gun.rotation) * MAX_SPEED
 	
 	#performs movement of player
 	motion = move_and_slide(motion, Vector2.UP);
+	
+	
 	
 
 
