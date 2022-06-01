@@ -29,6 +29,8 @@ func _on_Hitbox_area_entered(area):
 	print(area.name)
 	if area.name == "BossHitbox" or area.name == "EnemyHitbox":
 		$EnemyHit.play()
+	if area.name == "EnemyBullet" or area.name == "TrashShotHitbox":
+		$GroundHit.play()
 	
 	yield(get_tree().create_timer(0.55), "timeout")
 	queue_free()
