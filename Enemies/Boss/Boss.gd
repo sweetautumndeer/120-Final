@@ -8,8 +8,8 @@ var GRAVITY = 10
 var MAX_SPEED = 300
 var t = 0
 var can_fire = true
-export var BOSSHEALTH = 25
-export var BOSSHEALTH_MAX = 25
+export var BOSSHEALTH = 50
+export var BOSSHEALTH_MAX = 50
 var format_string = "Health = %d"
 
 onready var hitbox = get_node("BossHitbox")
@@ -137,6 +137,6 @@ func _on_HitBox_area_entered(area):
 			areaCheck.set_deferred("disabled", true)
 			hitboxCheck.set_deferred("disabled", true)
 			collisionshape.set_deferred("disabled", true)
-			yield(get_tree().create_timer(5), "timeout")
+			yield(get_tree().create_timer(2), "timeout")
 			get_tree().change_scene("res://LevelScenes/WinScreen.tscn")
 			

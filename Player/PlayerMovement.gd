@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 const ACCELERATION = 300
-const MAX_SPEED = 200
+const MAX_SPEED = 125
 const FRICTION = 0.25
 const GRAVITY = 300
 const JUMP_FORCE = 190
@@ -85,7 +85,7 @@ func _physics_process(delta):
 			jumped = true
 	
 	if Input.is_action_just_released("jump") && motion.y < 0:
-		motion.y = 0
+		motion.y = clamp(motion.y/3, -JUMP_FORCE/2, 0)
 	
 	"""if Input.is_action_just_pressed("fire") and not is_on_floor() and can_gunjump:
 		print($Gun.rotation_degrees + 180)
