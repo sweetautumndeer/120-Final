@@ -80,11 +80,11 @@ flip_h = true
 position = Vector2( 0.936996, 2.4594 )
 shape = SubResource( 3 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="EnemyHitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 position = Vector2( 0.662167, 1.85406 )
 shape = SubResource( 4 )
 
@@ -96,4 +96,4 @@ anims/Stop = SubResource( 6 )
 position = Vector2( -13.2433, 3.31082 )
 script = ExtResource( 3 )
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="EnemyHitbox" to="." method="_on_Area2D_area_entered"]

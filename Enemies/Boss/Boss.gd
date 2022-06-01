@@ -11,7 +11,7 @@ var can_fire = true
 export var BOSSHEALTH = 50
 var format_string = "Health = %d"
 
-
+onready var hitbox = get_node("BossHitbox")
 onready var sprite = get_node("Node2D/Sprite")
 onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
@@ -38,23 +38,23 @@ func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
-			$HitBox.monitorable = false
+			hitbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
 			rotation = lerp(rotation, 0, WEIGHT)
 			position.x = lerp(position.x, idlePos.position.x, WEIGHT)
 			position.y = lerp(position.y, idlePos.position.y, WEIGHT)
 			if nearPosition(position, idlePos.position):
-				$HitBox.monitorable = true
+				hitbox.monitorable = true
 				position = idlePos.position
 		bossState.TRASHSHOT:
-			$HitBox.monitorable = false
+			hitbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
 			position.x = lerp(position.x, shootPos.position.x, WEIGHT)
 			position.y = lerp(position.y, shootPos.position.y, WEIGHT)
 			if nearPosition(position, shootPos.position):
-				$HitBox.monitorable = true
+				hitbox.monitorable = true
 				position = shootPos.position
 			
 			#aim at player
@@ -118,7 +118,7 @@ func _on_Area2D_body_entered(body):
 
 func _on_HitBox_area_entered(area):
 	print("collision")
-	if area.name == "PlayerBullet":
+	if area.name == "PlayerBulletHitbox":
 		BOSSHEALTH -= 1
 		hitflash.play("Start")
 		$Health.text = format_string % BOSSHEALTH

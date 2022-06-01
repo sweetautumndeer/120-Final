@@ -11,11 +11,11 @@ extents = Vector2( 1.98307, 1.69939 )
 [node name="PlayerBullet" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="PlayerBulletHitbox" type="Area2D" parent="."]
 collision_layer = 10
 collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBulletHitbox"]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -33,5 +33,5 @@ volume_db = -13.983
 [node name="GroundHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerBulletHitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

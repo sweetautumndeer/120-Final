@@ -90,11 +90,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="BossHitbox" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitbox"]
 position = Vector2( -3.5, -9.5 )
 shape = SubResource( 3 )
 
@@ -109,4 +109,4 @@ anims/Stop = SubResource( 6 )
 
 [connection signal="area_entered" from="Node2D/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="area_entered" from="BossHitbox" to="." method="_on_HitBox_area_entered"]

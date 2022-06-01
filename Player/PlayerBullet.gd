@@ -21,12 +21,13 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func _on_Hitbox_area_entered(area):
-	$Hitbox.queue_free()
+	$PlayerBulletHitbox.queue_free()
 	$Sprite.visible = false
 	hitEnemy = true
 	print("enemyhit")
 	
-	if area.name == "Boss" or area.name == "Enemy":
+	print(area.name)
+	if area.name == "BossHitbox" or area.name == "EnemyHitbox":
 		$EnemyHit.play()
 	
 	yield(get_tree().create_timer(0.55), "timeout")
