@@ -26,9 +26,11 @@ script = ExtResource( 1 )
 
 [node name="MenuHover" type="AudioStreamPlayer" parent="PlayButton"]
 stream = ExtResource( 5 )
+volume_db = -16.612
 
 [node name="MenuClick" type="AudioStreamPlayer" parent="PlayButton"]
 stream = ExtResource( 6 )
+volume_db = -13.109
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 17.0
