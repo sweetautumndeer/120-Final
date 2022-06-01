@@ -8,11 +8,16 @@ var GRAVITY = 10
 var MAX_SPEED = 300
 var t = 0
 var can_fire = true
-export var BOSSHEALTH = 50
+export var BOSSHEALTH = 25
+export var BOSSHEALTH_MAX = 25
 var format_string = "Health = %d"
 
 onready var hitbox = get_node("BossHitbox")
-onready var sprite = get_node("Node2D/Sprite")
+onready var bossHealthbar = get_node("../CanvasLayer/BossHealthBar/ProgressBar")
+onready var hitboxCheck = $BossHitbox/CollisionShape2D
+onready var areaCheck = $Node2D/Area2D/CollisionShape2D
+onready var collisionshape = $CollisionShape2D
+onready var sprite = get_node("Node2D/Boss")
 onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
 onready var player = get_node("../Player")
@@ -30,10 +35,13 @@ var currentState = bossState.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Health.text = format_string % BOSSHEALTH
+	#$Health.text = format_string % BOSSHEALTH
 	initialScale = $Node2D.scale.x
 	hitflash.play("Stop")
 	Global.currentCheckpoint = "Boss"
+	
+	bossHealthbar.max_value = BOSSHEALTH_MAX
+	bossHealthbar.value = BOSSHEALTH 
 
 func _physics_process(delta):
 	#main state machine
@@ -121,7 +129,14 @@ func _on_HitBox_area_entered(area):
 	print("collision")
 	if area.name == "PlayerBulletHitbox":
 		BOSSHEALTH -= 1
+		bossHealthbar.value = BOSSHEALTH
 		hitflash.play("Start")
-		$Health.text = format_string % BOSSHEALTH
+		#$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
-			queue_free()
+			sprite.visible = false
+			areaCheck.set_deferred("disabled", true)
+			hitboxCheck.set_deferred("disabled", true)
+			collisionshape.set_deferred("disabled", true)
+			yield(get_tree().create_timer(5), "timeout")
+			get_tree().change_scene("res://LevelScenes/WinScreen.tscn")
+			

@@ -81,15 +81,6 @@ collision_mask = 16
 position = Vector2( -5, -6.8479 )
 shape = SubResource( 2 )
 
-[node name="Health" type="Label" parent="."]
-margin_left = -10.0
-margin_top = -38.0
-margin_right = 30.0
-margin_bottom = -24.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BossHitbox" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
@@ -99,7 +90,6 @@ position = Vector2( -3.5, -9.5 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0.511429, 1.88349 )
 shape = SubResource( 4 )
 

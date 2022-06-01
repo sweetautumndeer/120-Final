@@ -119,12 +119,6 @@ position = Vector2( -6.8651, -2.09193 )
 position = Vector2( -6.5115, -0.830994 )
 shape = SubResource( 5 )
 
-[node name="Health" type="Label" parent="."]
-margin_left = -18.4732
-margin_top = -37.2999
-margin_right = 21.5268
-margin_bottom = -23.2999
-
 [node name="HitflashAnimation" type="AnimationPlayer" parent="."]
 anims/Start = SubResource( 6 )
 anims/Stop = SubResource( 7 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/PlayButtonHover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/SFX/MenuHover.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/SFX/MenuClick.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/logo.png" type="Texture" id=7]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -14,15 +15,21 @@ position = Vector2( 100, 92 )
 scale = Vector2( 0.568333, 0.576562 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 54.51, 128.585, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayButton" type="TextureButton" parent="."]
-margin_left = 19.0
-margin_top = 107.0
-margin_right = 159.0
-margin_bottom = 177.0
+margin_left = 105.417
+margin_top = 103.436
+margin_right = 245.417
+margin_bottom = 173.436
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MenuHover" type="AudioStreamPlayer" parent="PlayButton"]
 stream = ExtResource( 5 )
@@ -32,13 +39,9 @@ volume_db = -16.612
 stream = ExtResource( 6 )
 volume_db = -13.109
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 17.0
-margin_top = 25.0
-margin_right = 217.0
-margin_bottom = 79.0
-text = "Robo Gunslinger
-"
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 162.418, 67.41 )
+texture = ExtResource( 7 )
 
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_PlayButton_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]

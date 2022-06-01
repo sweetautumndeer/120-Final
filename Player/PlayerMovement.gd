@@ -7,7 +7,8 @@ const FRICTION = 0.25
 const GRAVITY = 300
 const JUMP_FORCE = 190
 
-export var health = 3
+export var max_health = 3
+var health = 3
 var motion = Vector2.ZERO
 var format_string = "Health = %d"
 
@@ -15,14 +16,25 @@ onready var hitflash = $HitflashAnimation
 onready var sprite = $AnimatedSprite
 onready var jumpSFX = $Jump
 onready var landSFX = $Land
+onready var healthbar = get_node("../CanvasLayer/PlayerHealthBar/ProgressBar")
+
 var can_gunjump = true
 var jumped = false
 var footstepSFXPlayed = false
 
+
+
+
+
 func _ready():
+	
 	get_node("CollisionShape2D")
 	hitflash.play("Stop")
-	$Health.text = format_string % health
+#	$Health.text = format_string % health
+	
+	healthbar.max_value = max_health
+	healthbar.value = health
+	
 
 func playFootsteps():
 	if not footstepSFXPlayed and is_on_floor():
@@ -75,10 +87,10 @@ func _physics_process(delta):
 	if Input.is_action_just_released("jump") && motion.y < 0:
 		motion.y = 0
 	
-	if Input.is_action_just_pressed("fire") and not is_on_floor() and can_gunjump:
+	"""if Input.is_action_just_pressed("fire") and not is_on_floor() and can_gunjump:
 		print($Gun.rotation_degrees + 180)
 		can_gunjump = false
-		motion = Vector2(-1, 0).rotated($Gun.rotation) * MAX_SPEED
+		motion = Vector2(-1, 0).rotated($Gun.rotation) * MAX_SPEED"""
 	
 	#performs movement of player
 	motion = move_and_slide(motion, Vector2.UP);
@@ -91,7 +103,7 @@ func _physics_process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	var spawn = Vector2(50.0, 100.0)
 	
-	$Health.text = format_string % health
+	#$Health.text = format_string % health
 	if health > 0:
 		set_global_position(spawn)
 	else:
@@ -104,6 +116,9 @@ func _on_Area2D_area_entered(area):
 	if area.name == "BossPortal":
 		pass
 	health -= 1
+	healthbar.value = health
+
+	
 	hitflash.play("Start")
 	if area.position.x > position.x:
 		motion.x -= 300
@@ -112,7 +127,7 @@ func _on_Area2D_area_entered(area):
 		motion.x += 300
 		motion.y -= 100
 	
-	$Health.text = format_string % health
+	#$Health.text = format_string % health
 	if health == 0:
 		print("game over")
 		queue_free()

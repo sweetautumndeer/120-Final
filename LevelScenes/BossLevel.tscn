@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Music/Boss.ogg" type="AudioStream" id=4]
+[ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LevelAssets/boss_health.tres" type="Theme" id=6]
 
 [node name="Boss Level" type="Node2D"]
 
@@ -13,6 +15,9 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 491.072, 11.6965, 1385.68, 405.654 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="FloorBounds" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -43,3 +48,32 @@ polygon = PoolVector2Array( -1.1918, 0.172192, 0.00115967, 175.836, -16.1755, 24
 stream = ExtResource( 4 )
 volume_db = -13.983
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = -0.259918
+margin_top = -2.94495
+margin_right = 39.7401
+margin_bottom = 37.0551
+
+[node name="BossHealthBar" type="Control" parent="CanvasLayer"]
+margin_left = 175.129
+margin_top = -113.708
+margin_right = 215.129
+margin_bottom = -73.708
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BossHealthBar"]
+margin_left = -105.529
+margin_top = 117.055
+margin_right = 68.4712
+margin_bottom = 127.055
+theme = ExtResource( 6 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
