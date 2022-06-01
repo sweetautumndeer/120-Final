@@ -18,6 +18,10 @@ config/name="RobotCowboy"
 run/main_scene="res://LevelScenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://LevelScenes/Global.gd"
+
 [display]
 
 window/size/width=320
@@ -30,6 +34,7 @@ window/stretch/aspect="keep"
 [global]
 
 scene=false
+autoload=false
 
 [input]
 

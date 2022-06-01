@@ -8,6 +8,7 @@ extends Sprite
 var can_fire = true;
 var bullet = preload("res://Player/PlayerBullet.tscn")
 var using_mouse = false
+var shooting_speed = 0.4
 onready var gunshotSFX = $Gunshot
 
 # Called when the node enters the scene tree for the first time.
@@ -35,7 +36,7 @@ func fire():
 		
 		#timer until gun can be fire again
 		can_fire = false
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(shooting_speed), "timeout")
 		can_fire = true;
 
 func _physics_process(delta):

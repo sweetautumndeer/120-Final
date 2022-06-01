@@ -33,6 +33,7 @@ func _ready():
 	$Health.text = format_string % BOSSHEALTH
 	initialScale = $Node2D.scale.x
 	hitflash.play("Stop")
+	Global.currentCheckpoint = "Boss"
 
 func _physics_process(delta):
 	#main state machine
