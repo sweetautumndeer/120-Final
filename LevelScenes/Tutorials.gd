@@ -1,11 +1,15 @@
 extends Node
 
+var tutorialMaxTime = 15
+var movementTutorialTimer = 0
 onready var MovementA = $MovementA
 onready var MovementD = $MovementD
 var jumpTutorialTriggered = false
+var jumpTutorialTimer = 0
 onready var JumpW = $JumpW
 onready var JumpSpace = $JumpSpace
 var shootTutorialTriggered = false
+var shootTutorialTimer = 0
 onready var ShootLeftClick = $ShootLeftClick
 onready var ShootArrowKeys = $ShootArrowKeys
 
@@ -16,16 +20,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if jumpTutorialTriggered and Input.is_action_just_pressed("jump"):
-		JumpW.visible = false
-		JumpSpace.visible = false
-	if shootTutorialTriggered and Input.is_action_just_pressed("fire"):
-		ShootLeftClick.visible = false
-		ShootArrowKeys.visible = false
-	if MovementA.visible and Input.is_action_just_pressed("left"):
-		MovementA.visible = false
-	if MovementD.visible and Input.is_action_just_pressed("right"):
-		MovementD.visible = false
+	if jumpTutorialTriggered:
+		jumpTutorialTimer += delta
+		if jumpTutorialTimer > tutorialMaxTime and Input.is_action_just_pressed("jump"):
+			JumpW.visible = false
+			JumpSpace.visible = false
+	if shootTutorialTriggered:
+		shootTutorialTimer += delta
+		if shootTutorialTimer > tutorialMaxTime and Input.is_action_just_pressed("fire"):
+			ShootLeftClick.visible = false
+			ShootArrowKeys.visible = false
+		if shootTutorialTimer > tutorialMaxTime and (Input.is_action_just_pressed("arrow_right") or Input.is_action_just_pressed("arrow_down") or Input.is_action_just_pressed("arrow_left") or Input.is_action_just_pressed("arrow_up")):
+			ShootLeftClick.visible = false
+			ShootArrowKeys.visible = false
+	if MovementA.visible or MovementD.visible:
+		movementTutorialTimer += delta
+		if movementTutorialTimer > tutorialMaxTime and Input.is_action_just_pressed("left"):
+			MovementA.visible = false
+		if movementTutorialTimer > tutorialMaxTime and Input.is_action_just_pressed("right"):
+			MovementD.visible = false
 
 
 func _on_JumpTutorialTrigger_area_entered(area):

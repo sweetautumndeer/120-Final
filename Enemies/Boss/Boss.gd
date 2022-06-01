@@ -5,14 +5,14 @@ var SPEED = 300
 var WEIGHT = 0.1
 var motion = Vector2.ZERO
 var GRAVITY = 10
-var MAX_SPEED = 300
+var MAX_SPEED = 150
 var t = 0
 var can_fire = true
 export var BOSSHEALTH = 50
 export var BOSSHEALTH_MAX = 50
 var format_string = "Health = %d"
 
-onready var hitbox = get_node("BossHitbox")
+onready var hurtbox = get_node("BossHurtbox")
 onready var bossHealthbar = get_node("../CanvasLayer/BossHealthBar/ProgressBar")
 onready var hitboxCheck = $BossHitbox/CollisionShape2D
 onready var areaCheck = $Node2D/Area2D/CollisionShape2D
@@ -47,23 +47,24 @@ func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
-			hitbox.monitorable = false
+			sprite.flip_h = false
+			hurtbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
 			rotation = lerp(rotation, 0, WEIGHT)
 			position.x = lerp(position.x, idlePos.position.x, WEIGHT)
 			position.y = lerp(position.y, idlePos.position.y, WEIGHT)
 			if nearPosition(position, idlePos.position):
-				hitbox.monitorable = true
+				hurtbox.monitorable = true
 				position = idlePos.position
 		bossState.TRASHSHOT:
-			hitbox.monitorable = false
+			hurtbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
 			position.x = lerp(position.x, shootPos.position.x, WEIGHT)
 			position.y = lerp(position.y, shootPos.position.y, WEIGHT)
 			if nearPosition(position, shootPos.position):
-				hitbox.monitorable = true
+				hurtbox.monitorable = true
 				position = shootPos.position
 			
 			#aim at player
@@ -120,6 +121,7 @@ func nearPosition(pos1, pos2):
 
 func _on_Area2D_body_entered(body):
 	if body.name == "WallBounds":
+		sprite.flip_h = not sprite.flip_h
 		SPEED = -SPEED
 		
 		#$Node2D.scale.x = -$Node2D.scale.x
