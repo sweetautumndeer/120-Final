@@ -33,11 +33,11 @@ script = ExtResource( 1 )
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 175, 61 )
+position = Vector2( 417, 61 )
 scale = Vector2( 0.290926, 0.29765 )
 texture = ExtResource( 8 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 10912, 766 )
+region_rect = Rect2( 0, 0, 3500, 766 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 142, 119 )
