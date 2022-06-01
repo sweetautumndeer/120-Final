@@ -5,15 +5,21 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var maxTime = 2.5
+var t = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	t = 0
+
+func _process(delta):
+	t += delta
+	if t > maxTime:
+		$Continue.visible = true
 
 func _input(event):
-	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_ENTER:
-			get_tree().change_scene("res://LevelScenes/Credits.tscn")
+	if t > maxTime and ((event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed)):
+		get_tree().change_scene("res://LevelScenes/Credits.tscn")
 
 #func _process(delta):
 #	pass

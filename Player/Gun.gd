@@ -48,66 +48,68 @@ func _physics_process(delta):
 	
 
 		
-	var mouse_pos = get_global_mouse_position()
+	
 	
 	#gets mouse position and rotates gun based on it
+	var mouse_pos = get_global_mouse_position()
 	if using_mouse:
 		look_at(mouse_pos)
+		#flips gun to face the mouse sprite direction
+		if mouse_pos.x < position.x:
+			get_node(".").set_flip_v(true)
+		else:
+			get_node(".").set_flip_v(false)
 	
 	if Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_right"):
 		using_mouse = false
-		get_node(".").set_flip_v(false)
+		flip_v = false
 		look_at(position + Vector2.DOWN + Vector2.RIGHT)
 		fire()
 		
 	elif Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_left") :
 		using_mouse = false
-		get_node(".").set_flip_v(true)
+		flip_v = true
 		look_at(position + Vector2.DOWN + Vector2.LEFT)
 		fire()
 		
 	elif Input.is_action_pressed("arrow_up") and Input.is_action_pressed("arrow_right") :
 		using_mouse = false
-		get_node(".").set_flip_v(false)
+		flip_v = false
 		look_at(position + Vector2.UP + Vector2.RIGHT)
 		fire()
 		
 	elif Input.is_action_pressed("arrow_up") and Input.is_action_pressed("arrow_left"):
 		using_mouse = false
-		get_node(".").set_flip_v(true)
+		flip_v = true
 		look_at(position + Vector2.UP + Vector2.LEFT)
 		fire()
 	
 	elif Input.is_action_pressed("arrow_right") :
 		using_mouse = false
-		get_node(".").set_flip_v(false)
+		flip_v = false
 		look_at(position + Vector2.RIGHT)
 		fire()
 		
 	elif Input.is_action_pressed("arrow_left"):
 		using_mouse = false
-		get_node(".").set_flip_v(true)
+		flip_v = true
 		look_at(position + Vector2.LEFT)
 		fire()
 		
 		
 	elif Input.is_action_pressed("arrow_up"):
 		using_mouse = false
-		get_node(".").set_flip_v(false)
+		flip_v = false
 		look_at(position + Vector2.UP)
 		fire()
 		
 	elif Input.is_action_pressed("arrow_down"):
 		using_mouse = false
-		get_node(".").set_flip_v(false)
+		flip_v = false
 		look_at(position + Vector2.DOWN)
 		fire()
 
-	#flips gun to face the mouse sprite direction
-	if mouse_pos.x < position.x:
-		get_node(".").set_flip_v(true)
-	else:
-		get_node(".").set_flip_v(false)
+	
 	
 	#if fire is inputted using mouse click creates bullet instance at guns rotation
 	if Input.is_action_pressed("fire"):

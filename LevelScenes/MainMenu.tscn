@@ -20,16 +20,13 @@ __meta__ = {
 }
 
 [node name="PlayButton" type="TextureButton" parent="."]
-margin_left = 105.417
-margin_top = 103.436
-margin_right = 245.417
-margin_bottom = 173.436
+margin_left = 105.0
+margin_top = 103.0
+margin_right = 233.0
+margin_bottom = 167.0
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MenuHover" type="AudioStreamPlayer" parent="PlayButton"]
 stream = ExtResource( 5 )

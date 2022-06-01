@@ -222,11 +222,11 @@ script = ExtResource( 1 )
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 175, 61 )
+position = Vector2( 417, 61 )
 scale = Vector2( 0.290926, 0.29765 )
 texture = ExtResource( 8 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 10912, 766 )
+region_rect = Rect2( 0, 0, 3500, 766 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 142, 119 )
@@ -394,7 +394,7 @@ position = Vector2( 586, 53 )
 texture = ExtResource( 15 )
 
 [node name="JumpTutorialTrigger" type="Area2D" parent="Tutorials"]
-position = Vector2( 269, 126 )
+position = Vector2( 203, 119 )
 collision_layer = 4
 collision_mask = 4
 
@@ -403,7 +403,7 @@ position = Vector2( -44, 0 )
 shape = SubResource( 1 )
 
 [node name="ShootTutorialTrigger" type="Area2D" parent="Tutorials"]
-position = Vector2( 485, 133 )
+position = Vector2( 413, 135 )
 collision_layer = 4
 collision_mask = 4
 
