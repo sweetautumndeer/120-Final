@@ -20,7 +20,7 @@ position = Vector2( 160.421, 106.759 )
 scale = Vector2( 0.296453, 0.296453 )
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Rearmed" type="Label" parent="."]
 margin_left = 187.0
 margin_top = 8.0
 margin_right = 311.0
@@ -30,7 +30,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Rearmed"
 align = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Continue" type="Label" parent="."]
+visible = false
 margin_left = 198.0
 margin_top = 149.0
 margin_right = 308.0

@@ -50,6 +50,7 @@ Em Coo: Art, Programming"
 align = 1
 
 [node name="Continue" type="Label" parent="."]
+visible = false
 margin_left = 239.0
 margin_top = 164.0
 margin_right = 318.0
