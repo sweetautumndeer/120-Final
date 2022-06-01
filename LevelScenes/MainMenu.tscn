@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=1]
-[ext_resource path="res://Assets/level_background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/title_screen.png" type="Texture" id=2]
 [ext_resource path="res://Assets/PlayButton.png" type="Texture" id=3]
 [ext_resource path="res://Assets/PlayButtonHover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/SFX/MenuHover.ogg" type="AudioStream" id=5]
@@ -11,19 +11,15 @@
 [node name="MainMenu" type="Node2D"]
 
 [node name="TitleScreen" type="Sprite" parent="."]
-position = Vector2( 100, 92 )
-scale = Vector2( 0.568333, 0.576562 )
+position = Vector2( 163, 92 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
-region_rect = Rect2( 54.51, 128.585, 1, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="PlayButton" type="TextureButton" parent="."]
-margin_left = 105.0
-margin_top = 103.0
-margin_right = 233.0
-margin_bottom = 167.0
+margin_left = 106.0
+margin_top = 109.0
+margin_right = 234.0
+margin_bottom = 173.0
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 1 )
