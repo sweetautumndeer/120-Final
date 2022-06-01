@@ -200,7 +200,7 @@ position = Vector2( 586, 53 )
 texture = ExtResource( 15 )
 
 [node name="JumpTutorialTrigger" type="Area2D" parent="Tutorials"]
-position = Vector2( 269, 126 )
+position = Vector2( 203, 119 )
 collision_layer = 4
 collision_mask = 4
 
@@ -209,7 +209,7 @@ position = Vector2( -44, 0 )
 shape = SubResource( 1 )
 
 [node name="ShootTutorialTrigger" type="Area2D" parent="Tutorials"]
-position = Vector2( 485, 133 )
+position = Vector2( 413, 135 )
 collision_layer = 4
 collision_mask = 4
 
