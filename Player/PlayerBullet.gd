@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 
 export var speed = 500
@@ -20,14 +20,14 @@ func _physics_process(_delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
-
-func _on_PlayerBullet_area_entered(area):
-	$EnemyHit.play()
-	hitEnemy = true
-	$CollisionShape2D.disabled = true
-	monitorable = false
-	monitoring = false
+func _on_Hitbox_area_entered(area):
+	$Hitbox.queue_free()
 	$Sprite.visible = false
+	hitEnemy = true
 	print("enemyhit")
+	
+	if area.name == "Boss" or area.name == "Enemy":
+		$EnemyHit.play()
+	
 	yield(get_tree().create_timer(0.55), "timeout")
 	queue_free()

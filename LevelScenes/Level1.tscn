@@ -154,6 +154,7 @@ position = Vector2( 1010, 101 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -17.479
 autoplay = true
 
 [node name="BossPortal" parent="." instance=ExtResource( 6 )]
