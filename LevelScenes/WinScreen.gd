@@ -11,9 +11,8 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_ENTER:
-			get_tree().change_scene("res://LevelScenes/Credits.tscn")
+	if (event is InputEventKey and event.pressed) or (event is InputEventMouseButton and event.pressed):
+		get_tree().change_scene("res://LevelScenes/Credits.tscn")
 
 #func _process(delta):
 #	pass
