@@ -12,6 +12,7 @@
 [node name="LevelBackground" type="Sprite" parent="."]
 position = Vector2( 298, 83 )
 scale = Vector2( 0.5, 0.5 )
+z_index = -2
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 491.072, 11.6965, 1385.68, 405.654 )

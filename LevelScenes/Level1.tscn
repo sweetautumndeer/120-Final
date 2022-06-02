@@ -54,30 +54,36 @@ script = ExtResource( 18 )
 
 [node name="MovementA" type="Sprite" parent="Tutorials"]
 position = Vector2( 39, 107 )
+z_index = -1
 texture = ExtResource( 17 )
 
 [node name="MovementD" type="Sprite" parent="Tutorials"]
 position = Vector2( 76, 107 )
+z_index = -1
 texture = ExtResource( 12 )
 
 [node name="JumpW" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 247, 92 )
+z_index = -1
 texture = ExtResource( 13 )
 
 [node name="JumpSpace" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 303, 92 )
+z_index = -1
 texture = ExtResource( 14 )
 
 [node name="ShootLeftClick" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 534, 52 )
+z_index = -1
 texture = ExtResource( 16 )
 
 [node name="ShootArrowKeys" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 586, 53 )
+z_index = -1
 texture = ExtResource( 15 )
 
 [node name="JumpTutorialTrigger" type="Area2D" parent="Tutorials"]

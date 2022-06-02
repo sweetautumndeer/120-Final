@@ -109,7 +109,7 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	t += delta
-	if (currentState == bossState.IDLE && t > 5):
+	if (currentState == bossState.IDLE && t > 2):
 		#randomly choose next attack
 		var rand = randi() % 2
 		match (rand):
@@ -118,7 +118,7 @@ func _process(delta):
 			1:
 				currentState = bossState.TRASHSHOT
 	
-	if (currentState != bossState.IDLE && t > 15 && currentState != bossState.DEATH):
+	if (currentState != bossState.IDLE && t > 12 && currentState != bossState.DEATH):
 		#return to being idle
 		currentState = bossState.IDLE
 		t = 0;
