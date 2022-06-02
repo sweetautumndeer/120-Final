@@ -11,4 +11,4 @@ offset = Vector2( 10, 0 )
 script = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -3.36132, 1.63324 )
+position = Vector2( -5.47603, 0.634942 )

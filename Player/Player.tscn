@@ -93,22 +93,22 @@ texture = ExtResource( 2 )
 position = Vector2( -6.88092, -0.830994 )
 shape = SubResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( -5.96139, -1.76228 )
-scale = Vector2( 0.429688, 0.429688 )
-z_as_relative = false
-frames = SubResource( 4 )
-animation = "run"
-frame = 2
-
 [node name="Gun" parent="." instance=ExtResource( 1 )]
-position = Vector2( 3.9885, 0.669006 )
+position = Vector2( 1.9885, 0.669006 )
 z_as_relative = false
 
 [node name="Gunshot" type="AudioStreamPlayer" parent="Gun"]
 stream = ExtResource( 11 )
 volume_db = -9.613
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( -6.0115, -2.33099 )
+scale = Vector2( 0.429688, 0.429688 )
+z_as_relative = false
+frames = SubResource( 4 )
+animation = "run"
+frame = 2
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -6.8651, -2.09193 )
