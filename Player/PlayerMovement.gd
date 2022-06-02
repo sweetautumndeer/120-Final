@@ -31,9 +31,9 @@ func _ready():
 	get_node("CollisionShape2D")
 	hitflash.play("Stop")
 #	$Health.text = format_string % health
-	
-	healthbar.max_value = max_health
-	healthbar.value = health
+	if healthbar != null:
+		healthbar.max_value = max_health
+		healthbar.value = health
 	
 
 func playFootsteps():
@@ -101,7 +101,7 @@ func _physics_process(delta):
 
 #respawns player if off screen
 func _on_VisibilityNotifier2D_screen_exited():
-	var spawn = Vector2(50.0, 100.0)
+	var spawn = Global.currentRespawn
 	
 	#$Health.text = format_string % health
 	if health > 0:
@@ -116,7 +116,8 @@ func _on_Area2D_area_entered(area):
 	if area.name == "BossPortal":
 		pass
 	health -= 1
-	healthbar.value = health
+	if healthbar != null:
+		healthbar.value = health
 
 	
 	hitflash.play("Start")

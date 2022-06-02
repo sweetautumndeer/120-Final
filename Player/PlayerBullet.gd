@@ -34,3 +34,11 @@ func _on_Hitbox_area_entered(area):
 	
 	yield(get_tree().create_timer(0.55), "timeout")
 	queue_free()
+
+
+func _on_PlayerBulletHitbox_body_entered(body):
+	$PlayerBulletHitbox.queue_free()
+	$Sprite.visible = false
+	$GroundHit.play()
+	yield(get_tree().create_timer(0.55), "timeout")
+	queue_free()

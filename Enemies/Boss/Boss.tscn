@@ -15,16 +15,15 @@ extents = Vector2( 21.5, 6.89576 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 29.5, 26.5 )
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 24.0
 height = 0.0
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 6.84251
 height = 6.71473
 
-[sub_resource type="Animation" id=5]
-resource_name = "Start"
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Node2D/Boss:material:shader_param/active")
@@ -39,8 +38,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Stop"
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Node2D/Boss:material:shader_param/active")
@@ -98,15 +96,15 @@ shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox"]
 position = Vector2( -4, -8 )
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.511429, 1.88349 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 5 )
-anims/Stop = SubResource( 6 )
+anims/Start = SubResource( 6 )
+anims/Stop = SubResource( 7 )
 
 [connection signal="area_entered" from="Node2D/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_Area2D_body_entered"]

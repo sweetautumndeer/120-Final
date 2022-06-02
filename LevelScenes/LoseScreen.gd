@@ -19,6 +19,8 @@ func _process(delta):
 func _on_RetryButton_pressed():
 	if Global.currentCheckpoint == "Level1":
 		get_tree().change_scene("res://LevelScenes/Level1.tscn")
+	if Global.currentCheckpoint == "Level2":
+		get_tree().change_scene("res://LevelScenes/Level2.tscn")
 	if Global.currentCheckpoint == "Boss":
 		get_tree().change_scene("res://LevelScenes/BossLevel.tscn")
 

@@ -8,8 +8,8 @@ var GRAVITY = 10
 var MAX_SPEED = 150
 var t = 0
 var can_fire = true
-export var BOSSHEALTH = 50
-export var BOSSHEALTH_MAX = 50
+export var BOSSHEALTH = 5
+export var BOSSHEALTH_MAX = 5
 var format_string = "Health = %d"
 
 onready var hurtbox = get_node("BossHurtbox")
@@ -28,7 +28,8 @@ enum bossState {
 	IDLE, #slowly moving around, not attacking
 	TRASHSHOT, #shooting trash at the player
 	SWEEP, #sweeping the ground of the arena
-	DESPERATION #bullet hell mode
+	DESPERATION, #bullet hell mode
+	DEATH
 }
 var currentState = bossState.IDLE
 
@@ -95,6 +96,11 @@ func _physics_process(delta):
 			motion.y += GRAVITY
 		bossState.DESPERATION:
 			pass
+		
+		bossState.DEATH:
+			if not is_on_wall():
+				motion.y += SPEED * delta
+				rotation_degrees += 10
 	
 	motion = move_and_slide(motion)
 
@@ -110,10 +116,11 @@ func _process(delta):
 			1:
 				currentState = bossState.TRASHSHOT
 	
-	if (currentState != bossState.IDLE && t > 15):
+	if (currentState != bossState.IDLE && t > 15 && currentState != bossState.DEATH):
 		#return to being idle
 		currentState = bossState.IDLE
 		t = 0;
+	
 
 # check if the two positions are close enough to each other to basically be the same
 func nearPosition(pos1, pos2):
@@ -135,10 +142,12 @@ func _on_HitBox_area_entered(area):
 		hitflash.play("Start")
 		#$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
-			sprite.visible = false
+			#sprite.visible = true
 			areaCheck.set_deferred("disabled", true)
 			hitboxCheck.set_deferred("disabled", true)
 			collisionshape.set_deferred("disabled", true)
-			yield(get_tree().create_timer(2), "timeout")
+			currentState = bossState.DEATH
+			t = 0
+			yield(get_tree().create_timer(5), "timeout")
 			get_tree().change_scene("res://LevelScenes/WinScreen.tscn")
 			
