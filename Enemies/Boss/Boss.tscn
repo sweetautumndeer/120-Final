@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemies/Bandit.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.gd" type="Script" id=2]
 [ext_resource path="res://Assets/boss.png" type="Texture" id=3]
 [ext_resource path="res://white_shader.gdshader" type="Shader" id=4]
+[ext_resource path="res://Assets/SFX/BossDeath.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/TrashShot.ogg" type="AudioStream" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -105,6 +107,20 @@ shape = SubResource( 5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Start = SubResource( 6 )
 anims/Stop = SubResource( 7 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="TrashShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+emission_shape = 1
+emission_sphere_radius = 30.36
+gravity = Vector2( 0, -98 )
 
 [connection signal="area_entered" from="Node2D/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_Area2D_body_entered"]

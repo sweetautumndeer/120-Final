@@ -8,10 +8,11 @@ var GRAVITY = 10
 var MAX_SPEED = 150
 var t = 0
 var can_fire = true
-export var BOSSHEALTH = 5
-export var BOSSHEALTH_MAX = 5
+export var BOSSHEALTH = 100
+export var BOSSHEALTH_MAX = 100
 var format_string = "Health = %d"
 
+onready var trashShot = $TrashShot
 onready var hurtbox = get_node("BossHurtbox")
 onready var bossHealthbar = get_node("../CanvasLayer/BossHealthBar/ProgressBar")
 onready var hitboxCheck = $BossHitbox/CollisionShape2D
@@ -74,6 +75,7 @@ func _physics_process(delta):
 			
 			# only fires when in position
 			if can_fire && nearPosition(position, shootPos.position):
+				trashShot.play()
 				var bullet_instance = bullet.instance()
 				bullet_instance.rotation = rotation
 		
@@ -143,11 +145,14 @@ func _on_HitBox_area_entered(area):
 		#$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
 			#sprite.visible = true
+			$DeathSound.play()
+			#$DeathParticles.emitting = true
+			hurtbox.queue_free()
 			areaCheck.set_deferred("disabled", true)
 			hitboxCheck.set_deferred("disabled", true)
 			collisionshape.set_deferred("disabled", true)
 			currentState = bossState.DEATH
 			t = 0
-			yield(get_tree().create_timer(5), "timeout")
+			yield(get_tree().create_timer(6), "timeout")
 			get_tree().change_scene("res://LevelScenes/WinScreen.tscn")
 			

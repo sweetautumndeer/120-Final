@@ -37,5 +37,4 @@ volume_db = -10.487
 bus = "SFX"
 
 [connection signal="area_entered" from="PlayerBulletHitbox" to="." method="_on_Hitbox_area_entered"]
-[connection signal="body_entered" from="PlayerBulletHitbox" to="." method="_on_PlayerBulletHitbox_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

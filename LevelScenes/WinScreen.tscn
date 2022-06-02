@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://LevelScenes/WinScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/win_screen.png" type="Texture" id=2]
 [ext_resource path="res://LevelAssets/Carnevalee Freakshow.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Music/WinJingle.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -39,3 +40,8 @@ margin_bottom = 190.0
 custom_colors/font_color = Color( 0.0941176, 0.0156863, 0.0156863, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Any Key to continue"
+
+[node name="WinJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "Music"

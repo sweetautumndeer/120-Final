@@ -4,6 +4,9 @@ extends Node2D
 export var speed = 500
 var hitEnemy = false
 
+onready var enemyHit = $EnemyHit
+onready var groundHit = $GroundHit
+
 func _ready():
 	set_as_toplevel(true)
 	
@@ -28,9 +31,11 @@ func _on_Hitbox_area_entered(area):
 	
 	print(area.name)
 	if area.name == "BossHitbox" or area.name == "EnemyHitbox":
-		$EnemyHit.play()
+		enemyHit.pitch_scale = randf() * .5 + .75 #range .75 - 1.25
+		enemyHit.play()
 	if area.name == "EnemyBullet" or area.name == "TrashShotHitbox":
-		$GroundHit.play()
+		groundHit.pitch_scale = randf() * .5 + .75 #range .75 - 1.25
+		groundHit.play()
 	
 	yield(get_tree().create_timer(0.55), "timeout")
 	queue_free()
