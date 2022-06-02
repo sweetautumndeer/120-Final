@@ -27,10 +27,12 @@ script = ExtResource( 1 )
 [node name="MenuHover" type="AudioStreamPlayer" parent="PlayButton"]
 stream = ExtResource( 5 )
 volume_db = -16.612
+bus = "SFX"
 
 [node name="MenuClick" type="AudioStreamPlayer" parent="PlayButton"]
 stream = ExtResource( 6 )
 volume_db = -13.109
+bus = "SFX"
 
 [node name="logo" type="Sprite" parent="."]
 position = Vector2( 162.418, 67.41 )

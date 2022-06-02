@@ -75,7 +75,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 3.0
+radius = 9.0
 height = 12.0
 
 [node name="Player" type="KinematicBody2D"]
@@ -100,6 +100,7 @@ z_as_relative = false
 [node name="Gunshot" type="AudioStreamPlayer" parent="Gun"]
 stream = ExtResource( 11 )
 volume_db = -9.613
+bus = "SFX"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 3 )
@@ -134,16 +135,19 @@ shape = SubResource( 8 )
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = -12.235
+bus = "SFX"
 
 [node name="Land" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -13.109
+bus = "SFX"
 
 [node name="Footsteps" type="Node" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="Footsteps"]
 stream = ExtResource( 14 )
 volume_db = -6.991
+bus = "SFX"
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Area2D_area_entered"]
