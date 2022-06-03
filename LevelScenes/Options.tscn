@@ -38,9 +38,9 @@ custom_styles/panel = SubResource( 4 )
 
 [node name="SFXVolume" type="Label" parent="Panel"]
 margin_left = 15.0
-margin_top = 5.0
+margin_top = 32.0
 margin_right = 67.0
-margin_bottom = 19.0
+margin_bottom = 46.0
 custom_fonts/font = SubResource( 2 )
 text = "SFX Volume"
 align = 2
@@ -71,9 +71,9 @@ min_value = -72.0
 max_value = 6.0
 
 [node name="CloseButton" type="Button" parent="Panel"]
-margin_left = 55.0
+margin_left = 109.0
 margin_top = 69.0
-margin_right = 92.0
+margin_right = 146.0
 margin_bottom = 88.0
 custom_fonts/font = SubResource( 5 )
 text = "Close"

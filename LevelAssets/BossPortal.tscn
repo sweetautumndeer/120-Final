@@ -7,6 +7,8 @@
 extents = Vector2( 64, 6.9375 )
 
 [node name="BossPortal" type="Area2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

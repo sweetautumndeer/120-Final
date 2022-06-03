@@ -18,6 +18,7 @@ func _ready():
 
 func _on_BossPortal_body_entered(body):
 	if Global.currentCheckpoint == "Level1":
+		print("why")
 		get_tree().change_scene("res://LevelScenes/Level2.tscn")
 	if Global.currentCheckpoint == "Level2":
 		get_tree().change_scene("res://LevelScenes/BossLevel.tscn")

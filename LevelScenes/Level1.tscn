@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://LevelScenes/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://LevelScenes/Tutorials.gd" type="Script" id=18]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=19]
 [ext_resource path="res://LevelAssets/TileMap.tscn" type="PackedScene" id=20]
+[ext_resource path="res://LevelScenes/Pause.tscn" type="PackedScene" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 51.25 )
@@ -34,11 +35,12 @@ script = ExtResource( 1 )
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 417, 61 )
+position = Vector2( -82, -61 )
 scale = Vector2( 0.290926, 0.29765 )
 texture = ExtResource( 8 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 3500, 766 )
+region_rect = Rect2( 0, 0, 7000, 766 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 161, 118 )
@@ -48,6 +50,10 @@ position = Vector2( 1, -7 )
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2( 2000, 248 )
+
+[node name="Pause" parent="Camera2D" instance=ExtResource( 21 )]
+visible = false
+position = Vector2( -35, -20 )
 
 [node name="Tutorials" type="Node" parent="."]
 script = ExtResource( 18 )
@@ -193,8 +199,6 @@ bus = "Music"
 
 [node name="BossPortal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1957, 158 )
-collision_layer = 5
-collision_mask = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 35

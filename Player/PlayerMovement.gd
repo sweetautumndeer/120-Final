@@ -22,10 +22,6 @@ var can_gunjump = true
 var jumped = false
 var footstepSFXPlayed = false
 
-
-
-
-
 func _ready():
 	
 	get_node("CollisionShape2D")
@@ -34,7 +30,9 @@ func _ready():
 	if healthbar != null:
 		healthbar.max_value = max_health
 		healthbar.value = health
-	
+
+func _process(delta):
+	pass
 
 func playFootsteps():
 	if not footstepSFXPlayed and is_on_floor():
@@ -97,10 +95,6 @@ func _physics_process(delta):
 	
 		#performs movement of player
 		motion = move_and_slide(motion, Vector2.UP);
-	
-	
-	
-
 
 #respawns player if off screen
 func _on_VisibilityNotifier2D_screen_exited():
