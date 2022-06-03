@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Enemies/Bandit.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.gd" type="Script" id=2]
@@ -40,12 +40,16 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
-shader_param/active = true
+shader_param/active = false
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 21.5, 6.89576 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 4 )
+shader_param/active = false
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 8 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 15 ) ],
 "loop": true,
@@ -58,21 +62,21 @@ animations = [ {
 "speed": 18.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 29.5, 26.5 )
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 24.0
 height = 0.0
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 6.84251
 height = 6.71473
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Boss:material:shader_param/active")
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -84,10 +88,10 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Boss:material:shader_param/active")
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -133,9 +137,10 @@ position = Vector2( -3.5, -6.8479 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 9 )
 position = Vector2( -3, -4 )
 scale = Vector2( 0.75, 0.75 )
-frames = SubResource( 8 )
+frames = SubResource( 3 )
 animation = "idle"
 
 [node name="BossHitbox" type="Area2D" parent="."]
@@ -144,21 +149,21 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossHitbox"]
 position = Vector2( -3.5, -12.5 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="BossHurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox"]
 position = Vector2( -4, -8 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.511429, 1.88349 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 6 )
-anims/Stop = SubResource( 7 )
+anims/Start = SubResource( 7 )
+anims/Stop = SubResource( 8 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

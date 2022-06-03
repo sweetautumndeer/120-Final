@@ -113,8 +113,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Area2D_area_entered(area):
-	if area.name == "BossPortal":
-		pass
+	print(area.name)
+	print(area.name == "Portal")
+	if area.name == "Portal":
+		return
 	health -= 1
 	if healthbar != null:
 		healthbar.value = health

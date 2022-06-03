@@ -10,7 +10,7 @@
 [ext_resource path="res://white_shader.gdshader" type="Shader" id=8]
 [ext_resource path="res://Enemies/EnemyMinigun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://LevelScenes/Level2.gd" type="Script" id=10]
-[ext_resource path="res://LevelAssets/BossPortal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://LevelAssets/Portal.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -75,8 +75,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BossPortal" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1062.53, 86.1494 )
+[node name="Portal" parent="." instance=ExtResource( 11 )]
+position = Vector2( 912.044, -5.79349 )
 
 [editable path="Camera2D"]
 [editable path="EnemySniper"]
