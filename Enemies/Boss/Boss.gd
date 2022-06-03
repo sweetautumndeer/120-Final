@@ -61,6 +61,8 @@ func _physics_process(delta):
 				hurtbox.monitorable = true
 				position = idlePos.position
 		bossState.TRASHSHOT:
+			#sprite.play("attack")
+			#sprite.play("attacking")
 			hurtbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
@@ -79,7 +81,7 @@ func _physics_process(delta):
 				trashShot.play()
 				var bullet_instance = bullet.instance()
 				bullet_instance.rotation = rotation
-		
+				sprite.play("attacking")
 				#creates instance at gun position
 				bullet_instance.global_position = $".".global_position
 				get_parent().add_child(bullet_instance)
@@ -89,7 +91,7 @@ func _physics_process(delta):
 				yield(get_tree().create_timer(2.5), "timeout")
 				can_fire = true;
 		bossState.SWEEP:
-			sprite.play("idle")
+			sprite.play("sweep")
 				
 			rotation = lerp(rotation, 0, WEIGHT)
 			motion.x += -SPEED * delta
