@@ -1,33 +1,88 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://LevelScenes/Options.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Music/Boss.ogg" type="AudioStream" id=2]
+[ext_resource path="res://LevelAssets/Carnevalee Freakshow.ttf" type="DynamicFontData" id=3]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.635294, 0.545098, 0.34902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 3 )
+
+[node name="OptionsMenu" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="MusicSlider" type="HSlider" parent="."]
-margin_left = 111.0
-margin_top = 52.0
-margin_right = 403.0
-margin_bottom = 108.0
+[node name="Panel" type="Panel" parent="."]
+margin_left = 79.0
+margin_top = 28.0
+margin_right = 231.0
+margin_bottom = 120.0
+theme = SubResource( 1 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="SFXVolume" type="Label" parent="Panel"]
+margin_left = 15.0
+margin_top = 5.0
+margin_right = 67.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 2 )
+text = "SFX Volume"
+align = 2
+
+[node name="SFXSlider" type="HSlider" parent="Panel/SFXVolume"]
+margin_left = 58.0
+margin_right = 350.0
+margin_bottom = 56.0
 rect_scale = Vector2( 0.25, 0.25 )
 min_value = -72.0
 max_value = 6.0
 
-[node name="SFXSlider" type="HSlider" parent="."]
-margin_left = 111.0
-margin_top = 69.0
-margin_right = 403.0
-margin_bottom = 125.0
+[node name="MusicVolume" type="Label" parent="Panel"]
+margin_left = 8.0
+margin_top = 18.0
+margin_right = 67.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 3 )
+text = "Music Volume"
+align = 2
+
+[node name="MusicSlider" type="HSlider" parent="Panel/MusicVolume"]
+margin_left = 65.0
+margin_right = 357.0
+margin_bottom = 56.0
 rect_scale = Vector2( 0.25, 0.25 )
 min_value = -72.0
 max_value = 6.0
+
+[node name="CloseButton" type="Button" parent="Panel"]
+margin_left = 55.0
+margin_top = 69.0
+margin_right = 92.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 5 )
+text = "Close"
 
 [node name="TestSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
 bus = "SFX"
 
-[connection signal="value_changed" from="MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="value_changed" from="Panel/SFXVolume/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="value_changed" from="Panel/MusicVolume/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_CloseButton_pressed"]

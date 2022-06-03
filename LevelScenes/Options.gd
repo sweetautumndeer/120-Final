@@ -22,3 +22,7 @@ func _on_MusicSlider_value_changed(value):
 
 func _on_SFXSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(2, value)
+
+
+func _on_CloseButton_pressed():
+	visible = false
