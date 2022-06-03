@@ -80,7 +80,6 @@ text = "Close"
 
 [node name="TestSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-autoplay = true
 bus = "SFX"
 
 [connection signal="value_changed" from="Panel/SFXVolume/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
