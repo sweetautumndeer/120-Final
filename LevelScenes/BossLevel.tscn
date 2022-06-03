@@ -67,9 +67,6 @@ margin_left = 175.129
 margin_top = -113.708
 margin_right = 215.129
 margin_bottom = -73.708
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BossHealthBar"]
 margin_left = -105.529

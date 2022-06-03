@@ -46,7 +46,7 @@ volume_db = -13.109
 bus = "SFX"
 
 [node name="logo" type="Sprite" parent="."]
-position = Vector2( 162.418, 67.41 )
+position = Vector2( 160, 65 )
 texture = ExtResource( 7 )
 
 [node name="OptionsButton" type="Button" parent="."]

@@ -49,6 +49,7 @@ func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
+			sprite.play("idle")
 			sprite.flip_h = false
 			hurtbox.monitorable = false
 			motion.x = 0
@@ -88,7 +89,7 @@ func _physics_process(delta):
 				yield(get_tree().create_timer(2.5), "timeout")
 				can_fire = true;
 		bossState.SWEEP:
-			
+			sprite.play("idle")
 				
 			rotation = lerp(rotation, 0, WEIGHT)
 			motion.x += -SPEED * delta
