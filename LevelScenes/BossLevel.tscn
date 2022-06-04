@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://Assets/Music/Boss.ogg" type="AudioStream" id=4]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://LevelAssets/boss_health.tres" type="Theme" id=6]
+[ext_resource path="res://LevelScenes/BossLevel.gd" type="Script" id=7]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=8]
 
 [node name="Boss Level" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="LevelBackground" type="Sprite" parent="."]
 position = Vector2( 298, 83 )
@@ -55,6 +58,10 @@ autoplay = true
 bus = "Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = true
+color = Color( 0, 0, 0, 1 )
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
 margin_left = -0.259918

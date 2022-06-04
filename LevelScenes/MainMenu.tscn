@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MainMenuController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/title_screen.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/SFX/MenuHover.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/SFX/MenuClick.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Assets/logo.png" type="Texture" id=7]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -61,6 +62,8 @@ flat = true
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 1, 19 )
+
+[node name="TransitionScreen" parent="." instance=ExtResource( 8 )]
 
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_PlayButton_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]

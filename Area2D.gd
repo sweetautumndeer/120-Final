@@ -5,7 +5,9 @@ extends Area2D
 # var a = 2
 # var b = "text"
 
-
+onready var transition = get_node("../CanvasLayer/TransitionScreen/AnimationPlayer")
+onready var screen = get_node("../CanvasLayer/TransitionScreen")
+onready var player = get_node("../Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,6 +20,10 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
+		screen.visible = true
+		
+		transition.play("fade")
+		yield(transition, "animation_finished")
 		print(Global.currentCheckpoint)
 		if Global.currentCheckpoint == "Level1":
 			Global.currentCheckpoint = "Level2"

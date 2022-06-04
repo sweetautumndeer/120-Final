@@ -7,10 +7,9 @@ extends Node2D
 onready var transition = $CanvasLayer/TransitionScreen/AnimationPlayer
 onready var screen = $CanvasLayer/TransitionScreen
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.currentCheckpoint = "Level2"
-	Global.currentRespawn = Vector2(100,100)
 	transition.play_backwards("fade")
 	yield(transition, "animation_finished")
 	screen.visible = false

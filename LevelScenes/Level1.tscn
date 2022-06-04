@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://LevelScenes/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=19]
 [ext_resource path="res://LevelAssets/TileMap.tscn" type="PackedScene" id=20]
 [ext_resource path="res://LevelScenes/Pause.tscn" type="PackedScene" id=21]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 51.25 )
@@ -201,6 +202,14 @@ bus = "Music"
 layer = 35
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 19 )]
+
+[node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 22 )]
+visible = true
+margin_left = -127.0
+margin_top = -14.0
+margin_right = 2313.0
+margin_bottom = 288.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1800.73, 66.4207 )

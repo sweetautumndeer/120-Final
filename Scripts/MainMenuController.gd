@@ -3,6 +3,8 @@ extends Button
 
 onready var menuHover = $MenuHover
 onready var menuClick = $MenuClick
+onready var transition = get_node("../TransitionScreen/AnimationPlayer")
+onready var screen = get_node("../TransitionScreen")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +17,9 @@ func _on_PlayButton_pressed():
 	$"../OptionsButton".visible = false
 	menuClick.play()
 	yield(get_tree().create_timer(2), "timeout")
+	screen.visible = true
+	transition.play("fade")
+	yield(transition, "animation_finished")
 	get_tree().change_scene("res://LevelScenes/Level1.tscn")
 
 
