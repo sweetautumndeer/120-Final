@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=1]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://LevelScenes/Level2.gd" type="Script" id=10]
 [ext_resource path="res://LevelAssets/Portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/boss_sign.png" type="Texture" id=13]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -30,6 +31,11 @@ position = Vector2( -13.9196, -45.4502 )
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2( 1209.74, 279.386 )
 
+[node name="BossSign" type="Sprite" parent="."]
+position = Vector2( 930, 14 )
+scale = Vector2( 0.640625, 0.609375 )
+texture = ExtResource( 13 )
+
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
 collision_mask = 3
 tile_data = PoolIntArray( 65560, 2, 0, 65561, 3, 0, 65562, 4, 0, 65563, 3, 0, 65564, 11, 0, 65565, 12, 0, 131080, 2, 0, 131081, 11, 0, 131082, 12, 0, 131096, 14, 0, 131097, 15, 0, 131098, 14, 0, 131099, 16, 0, 131100, 15, 0, 131101, 16, 0, 196615, 2, 0, 196616, 3, 0, 196617, 4, 0, 196618, 11, 0, 196632, 20, 0, 196633, 20, 0, 196634, 19, 0, 196635, 18, 0, 196636, 20, 0, 196637, 20, 0, 262144, 13, 0, 262145, 14, 0, 262146, 15, 0, 262147, 16, 0, 262148, 14, 0, 262149, 15, 0, 262150, 16, 0, 262151, 14, 0, 262152, 15, 0, 262153, 16, 0, 262154, 14, 0, 262168, 23, 0, 262169, 23, 0, 262170, 23, 0, 262171, 23, 0, 262172, 23, 0, 262173, 23, 0, 327680, 18, 0, 327681, 19, 0, 327682, 20, 0, 327683, 21, 0, 327684, 20, 0, 327685, 19, 0, 327686, 18, 0, 327687, 19, 0, 327688, 20, 0, 327689, 18, 0, 327690, 20, 0, 327704, 23, 0, 327705, 23, 0, 327706, 23, 0, 327707, 23, 0, 327708, 23, 0, 327709, 23, 0, 393216, 23, 0, 393217, 23, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 23, 0, 393223, 23, 0, 393224, 23, 0, 393225, 23, 0, 393226, 23, 0, 393240, 23, 0, 393241, 23, 0, 393242, 23, 0, 393243, 23, 0, 393244, 23, 0, 393245, 23, 0, 458776, 23, 0, 458777, 23, 0, 458778, 23, 0, 458779, 23, 0, 458780, 23, 0, 458781, 23, 0 )
@@ -46,7 +52,6 @@ remote_path = NodePath("../../Camera2D")
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 12 )]
-visible = true
 margin_left = -20.0
 margin_top = -82.0
 margin_right = 1239.0

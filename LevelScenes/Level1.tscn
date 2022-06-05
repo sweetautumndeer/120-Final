@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://LevelScenes/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Cactus.png" type="Texture" id=9]
 [ext_resource path="res://Assets/CactusCowboyHat.png" type="Texture" id=10]
-[ext_resource path="res://Assets/boss_sign.png" type="Texture" id=11]
 [ext_resource path="res://Assets/TutorialKeyD.png" type="Texture" id=12]
 [ext_resource path="res://Assets/TutorialKeyW.png" type="Texture" id=13]
 [ext_resource path="res://Assets/TutorialSpaceKey.png" type="Texture" id=14]
@@ -153,12 +152,6 @@ scale = Vector2( 0.859375, 0.84375 )
 z_index = -2
 texture = ExtResource( 10 )
 
-[node name="BossSign" type="Sprite" parent="."]
-position = Vector2( 1876, 115 )
-scale = Vector2( 0.40625, 0.421874 )
-z_index = -2
-texture = ExtResource( 11 )
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 62, 147 )
 
@@ -213,6 +206,7 @@ layer = 35
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 19 )]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 22 )]
+visible = true
 margin_left = -127.0
 margin_top = -14.0
 margin_right = 2313.0

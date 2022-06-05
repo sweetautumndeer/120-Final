@@ -2,26 +2,21 @@
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/level_background.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Music/Boss.ogg" type="AudioStream" id=4]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://LevelAssets/boss_health.tres" type="Theme" id=6]
 [ext_resource path="res://LevelScenes/BossLevel.gd" type="Script" id=7]
 [ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/scrapyard.png" type="Texture" id=9]
 
 [node name="Boss Level" type="Node2D"]
 script = ExtResource( 7 )
 
-[node name="LevelBackground" type="Sprite" parent="."]
-position = Vector2( 298, 83 )
-scale = Vector2( 0.5, 0.5 )
+[node name="Scrapyard" type="Sprite" parent="."]
+position = Vector2( 159, 89 )
+scale = Vector2( 0.236979, 0.236979 )
 z_index = -2
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 491.072, 11.6965, 1385.68, 405.654 )
-__meta__ = {
-"_edit_lock_": true
-}
+texture = ExtResource( 9 )
 
 [node name="FloorBounds" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -73,9 +68,6 @@ margin_left = 175.129
 margin_top = -113.708
 margin_right = 215.129
 margin_bottom = -73.708
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BossHealthBar"]
 margin_left = -105.529
