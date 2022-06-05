@@ -16,10 +16,9 @@ func _on_PlayButton_pressed():
 	visible = false
 	$"../OptionsButton".visible = false
 	menuClick.play()
-	yield(get_tree().create_timer(2), "timeout")
 	screen.visible = true
 	transition.play("fade")
-	yield(transition, "animation_finished")
+	yield(get_tree().create_timer(2), "timeout")
 	get_tree().change_scene("res://LevelScenes/Level1.tscn")
 
 

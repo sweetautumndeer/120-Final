@@ -83,6 +83,8 @@ func _physics_process(delta):
 			jumpSFX.play()
 			motion.y = -JUMP_FORCE
 			jumped = true
+	else:
+		jumped = true
 	
 	if Input.is_action_just_released("jump") && motion.y < 0:
 		motion.y = clamp(motion.y/3, -JUMP_FORCE/2, 0)
