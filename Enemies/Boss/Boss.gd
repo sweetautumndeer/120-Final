@@ -81,6 +81,8 @@ func _physics_process(delta):
 				trashShot.play()
 				var bullet_instance = bullet.instance()
 				bullet_instance.rotation = rotation
+				if BOSSHEALTH <= 50:
+					bullet_instance.speed = 300
 				sprite.play("attacking")
 				#creates instance at gun position
 				bullet_instance.global_position = $".".global_position
@@ -115,6 +117,8 @@ func _process(delta):
 	if (currentState == bossState.IDLE && t > 2):
 		#randomly choose next attack
 		var rand = randi() % 2
+		if BOSSHEALTH <= 50:
+			MAX_SPEED = MAX_SPEED * 2
 		match (rand):
 			0:
 				currentState = bossState.SWEEP
