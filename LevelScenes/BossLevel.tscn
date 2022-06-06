@@ -55,6 +55,7 @@ bus = "Music"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = true
 color = Color( 0, 0, 0, 1 )
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
