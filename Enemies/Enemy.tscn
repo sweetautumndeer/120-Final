@@ -21,7 +21,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 7.5, 13 )
+extents = Vector2( 7.5, 13.5 )
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 7.91488
@@ -81,7 +81,7 @@ frames = SubResource( 2 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.936996, 2.4594 )
+position = Vector2( 0.936996, 2.9594 )
 shape = SubResource( 3 )
 
 [node name="EnemyHitbox" type="Area2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=1]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=2]
@@ -13,38 +13,98 @@
 [ext_resource path="res://LevelAssets/Portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/boss_sign.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Cactus.png" type="Texture" id=14]
+[ext_resource path="res://Assets/CactusCowboyHat.png" type="Texture" id=15]
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/active = false
 
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="Level2" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 136, 94 )
+position = Vector2( 138, 105 )
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
 position = Vector2( -13.9196, -45.4502 )
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
-position = Vector2( 1209.74, 279.386 )
+position = Vector2( 2000, 279.386 )
 
 [node name="BossSign" type="Sprite" parent="."]
-position = Vector2( 930, 14 )
+position = Vector2( 1750, 64.5 )
 scale = Vector2( 0.640625, 0.609375 )
 texture = ExtResource( 13 )
 
+[node name="Cactus" type="Sprite" parent="."]
+position = Vector2( 48, 97 )
+texture = ExtResource( 14 )
+
+[node name="Cactus2" type="Sprite" parent="."]
+position = Vector2( 310.5, 46.5 )
+scale = Vector2( 0.734375, 0.734375 )
+texture = ExtResource( 14 )
+flip_h = true
+
+[node name="Cactus3" type="Sprite" parent="."]
+position = Vector2( 1100, 40 )
+scale = Vector2( 0.734375, 0.703125 )
+texture = ExtResource( 14 )
+offset = Vector2( 0.000366211, 9.95555 )
+
+[node name="Cactus4" type="Sprite" parent="."]
+position = Vector2( 1344, 72 )
+scale = Vector2( 0.707156, 0.667847 )
+texture = ExtResource( 14 )
+offset = Vector2( 0.000366211, 9.95555 )
+flip_h = true
+
+[node name="CactusCowboyHat" type="Sprite" parent="."]
+position = Vector2( 844, 8 )
+texture = ExtResource( 15 )
+
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
 collision_mask = 3
-tile_data = PoolIntArray( 65560, 2, 0, 65561, 3, 0, 65562, 4, 0, 65563, 3, 0, 65564, 11, 0, 65565, 12, 0, 131080, 2, 0, 131081, 11, 0, 131082, 12, 0, 131096, 14, 0, 131097, 15, 0, 131098, 14, 0, 131099, 16, 0, 131100, 15, 0, 131101, 16, 0, 196615, 2, 0, 196616, 3, 0, 196617, 4, 0, 196618, 11, 0, 196632, 20, 0, 196633, 20, 0, 196634, 19, 0, 196635, 18, 0, 196636, 20, 0, 196637, 20, 0, 262144, 13, 0, 262145, 14, 0, 262146, 15, 0, 262147, 16, 0, 262148, 14, 0, 262149, 15, 0, 262150, 16, 0, 262151, 14, 0, 262152, 15, 0, 262153, 16, 0, 262154, 14, 0, 262168, 23, 0, 262169, 23, 0, 262170, 23, 0, 262171, 23, 0, 262172, 23, 0, 262173, 23, 0, 327680, 18, 0, 327681, 19, 0, 327682, 20, 0, 327683, 21, 0, 327684, 20, 0, 327685, 19, 0, 327686, 18, 0, 327687, 19, 0, 327688, 20, 0, 327689, 18, 0, 327690, 20, 0, 327704, 23, 0, 327705, 23, 0, 327706, 23, 0, 327707, 23, 0, 327708, 23, 0, 327709, 23, 0, 393216, 23, 0, 393217, 23, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 23, 0, 393223, 23, 0, 393224, 23, 0, 393225, 23, 0, 393226, 23, 0, 393240, 23, 0, 393241, 23, 0, 393242, 23, 0, 393243, 23, 0, 393244, 23, 0, 393245, 23, 0, 458776, 23, 0, 458777, 23, 0, 458778, 23, 0, 458779, 23, 0, 458780, 23, 0, 458781, 23, 0 )
+tile_data = PoolIntArray( 65560, 2, 0, 65561, 3, 0, 65562, 4, 0, 65563, 3, 0, 65564, 11, 0, 65565, 12, 0, 131080, 2, 0, 131081, 11, 0, 131082, 12, 0, 131096, 14, 0, 131097, 15, 0, 131098, 14, 0, 131099, 16, 0, 131100, 15, 0, 131101, 16, 0, 131105, 13, 0, 131106, 14, 0, 131107, 15, 0, 131108, 16, 0, 131109, 17, 0, 196615, 2, 0, 196616, 3, 0, 196617, 4, 0, 196618, 11, 0, 196632, 20, 0, 196633, 20, 0, 196634, 19, 0, 196635, 18, 0, 196636, 20, 0, 196637, 20, 0, 196641, 18, 0, 196642, 19, 0, 196643, 20, 0, 196644, 21, 0, 196645, 22, 0, 196648, 2, 0, 196649, 3, 0, 196650, 4, 0, 196651, 12, 0, 262144, 13, 0, 262145, 14, 0, 262146, 15, 0, 262147, 16, 0, 262148, 14, 0, 262149, 15, 0, 262150, 16, 0, 262151, 14, 0, 262152, 15, 0, 262153, 16, 0, 262154, 14, 0, 262168, 23, 0, 262169, 23, 0, 262170, 23, 0, 262171, 23, 0, 262172, 23, 0, 262173, 23, 0, 262177, 23, 0, 262178, 23, 0, 262179, 23, 0, 262180, 23, 0, 262181, 23, 0, 262184, 23, 0, 262185, 23, 0, 262186, 23, 0, 262187, 23, 0, 262190, 2, 0, 262191, 3, 0, 262192, 4, 0, 262193, 11, 0, 262194, 12, 0, 327680, 18, 0, 327681, 19, 0, 327682, 20, 0, 327683, 21, 0, 327684, 20, 0, 327685, 19, 0, 327686, 18, 0, 327687, 19, 0, 327688, 20, 0, 327689, 18, 0, 327690, 20, 0, 327704, 23, 0, 327705, 23, 0, 327706, 23, 0, 327707, 23, 0, 327708, 23, 0, 327709, 23, 0, 327713, 23, 0, 327714, 23, 0, 327715, 23, 0, 327716, 23, 0, 327717, 23, 0, 327720, 23, 0, 327721, 23, 0, 327722, 23, 0, 327723, 23, 0, 327726, 14, 0, 327727, 15, 0, 327728, 16, 0, 327729, 14, 0, 327730, 15, 0, 393216, 23, 0, 393217, 23, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 23, 0, 393223, 23, 0, 393224, 23, 0, 393225, 23, 0, 393226, 23, 0, 393240, 23, 0, 393241, 23, 0, 393242, 23, 0, 393243, 23, 0, 393244, 23, 0, 393245, 23, 0, 393249, 23, 0, 393250, 23, 0, 393251, 23, 0, 393252, 23, 0, 393253, 23, 0, 393256, 23, 0, 393257, 23, 0, 393258, 23, 0, 393259, 23, 0, 393262, 20, 0, 393263, 19, 0, 393264, 18, 0, 393265, 19, 0, 393266, 20, 0, 458776, 23, 0, 458777, 23, 0, 458778, 23, 0, 458779, 23, 0, 458780, 23, 0, 458781, 23, 0, 458785, 23, 0, 458786, 23, 0, 458787, 23, 0, 458788, 23, 0, 458789, 23, 0, 458792, 23, 0, 458793, 23, 0, 458794, 23, 0, 458795, 23, 0, 458798, 23, 0, 458799, 23, 0, 458800, 23, 0, 458801, 23, 0, 458802, 23, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 33.2277, 104.682 )
+position = Vector2( 58, 116 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-position = Vector2( 102.772, -10.682 )
+position = Vector2( 80, -11 )
 remote_path = NodePath("../../Camera2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -52,6 +112,7 @@ remote_path = NodePath("../../Camera2D")
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 12 )]
+visible = true
 margin_left = -20.0
 margin_top = -82.0
 margin_right = 1239.0
@@ -62,19 +123,60 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 456, 107.949 )
 
 [node name="Platform2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 573, 102 )
+position = Vector2( 576, 127 )
 
 [node name="Platform3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 692, 70 )
+position = Vector2( 688, 95 )
+
+[node name="Platform4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1730, 92.5 )
+
+[node name="Platform5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1588, 55 )
+
+[node name="Platform6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1529, 77 )
+
+[node name="Enemy" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1523, 111 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1548, 49 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1198, 47 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1146, 47 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 16 )]
+position = Vector2( 949, 15 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1598, 27 )
 
 [node name="EnemySniper" parent="." instance=ExtResource( 7 )]
 position = Vector2( 457.313, 79 )
 
-[node name="AnimatedSprite" parent="EnemySniper" index="1"]
+[node name="AnimatedSprite" parent="EnemySniper" index="0"]
 material = SubResource( 1 )
 
+[node name="EnemySniper2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1713, 64 )
+
+[node name="AnimatedSprite" parent="EnemySniper2" index="0"]
+material = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="EnemySniper2" index="4"]
+root_node = NodePath("../../EnemySniper2")
+anims/Start = SubResource( 2 )
+anims/Stop = SubResource( 3 )
+
 [node name="EnemyMinigun" parent="." instance=ExtResource( 9 )]
-position = Vector2( 799, 15 )
+position = Vector2( 782, 16 )
+
+[node name="EnemyMinigun2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1513, 50 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -82,15 +184,13 @@ position = Vector2( 799, 15 )
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="level_background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -1554.34, 106.173 )
-scale = Vector2( 0.776322, 0.776321 )
+position = Vector2( -153, 75 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Portal" parent="." instance=ExtResource( 11 )]
-position = Vector2( 912.044, -5.79349 )
+position = Vector2( 1713, 21 )
 
 [editable path="Camera2D"]
 [editable path="EnemySniper"]
+[editable path="EnemySniper2"]
