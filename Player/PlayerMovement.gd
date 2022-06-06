@@ -17,6 +17,8 @@ onready var sprite = $AnimatedSprite
 onready var jumpSFX = $Jump
 onready var landSFX = $Land
 onready var healthbar = get_node("../CanvasLayer/PlayerHealthBar/ProgressBar")
+onready var transition = get_node("../CanvasLayer/TransitionScreen/AnimationPlayer")
+onready var screen = get_node("../CanvasLayer/TransitionScreen")
 
 var can_gunjump = true
 var jumped = false
@@ -135,5 +137,10 @@ func _on_Area2D_area_entered(area):
 	#$Health.text = format_string % health
 	if health == 0:
 		print("game over")
-		queue_free()
+		sprite.visible = false
+		$Gun.visible = false
+		$Gun.not_game_over = false
+		screen.visible = true
+		transition.play("fade")
+		yield(transition, "animation_finished")
 		get_tree().change_scene("res://LevelScenes/LoseScreen.tscn")

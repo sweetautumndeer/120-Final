@@ -10,6 +10,7 @@ var bullet = preload("res://Player/PlayerBullet.tscn")
 var using_mouse = false
 var shooting_speed = 0.4
 onready var gunshotSFX = $Gunshot
+var not_game_over = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +21,7 @@ func _input(event):
 		using_mouse = true
 
 func fire():
-	if can_fire:
+	if can_fire and not_game_over:
 		gunshotSFX.play()
 		
 		var bullet_instance = bullet.instance()
