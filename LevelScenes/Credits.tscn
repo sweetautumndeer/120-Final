@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://LevelScenes/Credits.gd" type="Script" id=1]
 [ext_resource path="res://LevelAssets/Carnevalee Freakshow.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/title_screen.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -14,7 +15,13 @@ font_data = ExtResource( 2 )
 [node name="Credits" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="TitleScreen" type="Sprite" parent="."]
+position = Vector2( 136, 70 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = -8.0
 margin_top = -9.0
 margin_right = 332.0
@@ -27,9 +34,9 @@ __meta__ = {
 
 [node name="Credits" type="Label" parent="."]
 margin_left = 67.0
-margin_top = 2.5
+margin_top = 11.0
 margin_right = 258.0
-margin_bottom = 83.5
+margin_bottom = 92.0
 custom_fonts/font = SubResource( 1 )
 text = "CREDITS
 
@@ -37,10 +44,10 @@ text = "CREDITS
 align = 1
 
 [node name="Names" type="Label" parent="."]
-margin_left = 6.0
-margin_top = 57.0
-margin_right = 317.0
-margin_bottom = 204.0
+margin_left = 1.0
+margin_top = 86.0
+margin_right = 320.0
+margin_bottom = 233.0
 custom_fonts/font = SubResource( 2 )
 text = "Autumn Moulios: Art, Programming, Audio, Production
 
