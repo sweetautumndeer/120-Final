@@ -11,6 +11,9 @@ var t = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	t = 0
+	$TransitionScreen/AnimationPlayer.play_backwards("fade")
+	yield($TransitionScreen/AnimationPlayer, "animation_finished")
+	$TransitionScreen.visible = false
 
 func _process(delta):
 	t += delta
