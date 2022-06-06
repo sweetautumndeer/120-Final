@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=1]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Assets/Cactus.png" type="Texture" id=14]
 [ext_resource path="res://Assets/CactusCowboyHat.png" type="Texture" id=15]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://LevelScenes/Pause.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/Concepts.ogg" type="AudioStream" id=18]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -57,6 +59,10 @@ script = ExtResource( 10 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 138, 105 )
+
+[node name="Pause" parent="Camera2D" instance=ExtResource( 17 )]
+visible = false
+position = Vector2( -27, -31 )
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
 position = Vector2( -13.9196, -45.4502 )
@@ -123,10 +129,10 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 456, 107.949 )
 
 [node name="Platform2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 576, 127 )
+position = Vector2( 601, 92 )
 
 [node name="Platform3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 688, 95 )
+position = Vector2( 658, 92 )
 
 [node name="Platform4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1730, 92.5 )
@@ -153,7 +159,7 @@ position = Vector2( 1146, 47 )
 position = Vector2( 949, 15 )
 
 [node name="Enemy6" parent="." instance=ExtResource( 16 )]
-position = Vector2( 1598, 27 )
+position = Vector2( 1581, 27 )
 
 [node name="EnemySniper" parent="." instance=ExtResource( 7 )]
 position = Vector2( 457.313, 79 )
@@ -173,10 +179,10 @@ anims/Start = SubResource( 2 )
 anims/Stop = SubResource( 3 )
 
 [node name="EnemyMinigun" parent="." instance=ExtResource( 9 )]
-position = Vector2( 782, 16 )
+position = Vector2( 804, 14 )
 
 [node name="EnemyMinigun2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1513, 50 )
+position = Vector2( 1520, 50 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -190,6 +196,12 @@ texture = ExtResource( 1 )
 
 [node name="Portal" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1713, 21 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -14.857
+autoplay = true
+bus = "Music"
 
 [editable path="Camera2D"]
 [editable path="EnemySniper"]
