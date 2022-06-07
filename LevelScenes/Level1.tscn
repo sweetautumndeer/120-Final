@@ -110,26 +110,26 @@ shape = SubResource( 1 )
 [node name="Cactus" type="Sprite" parent="."]
 position = Vector2( 110, 138 )
 scale = Vector2( 0.734375, 0.734375 )
-z_index = -2
+z_index = -4
 texture = ExtResource( 9 )
 
 [node name="Cactus4" type="Sprite" parent="."]
 position = Vector2( 222, 147 )
 scale = Vector2( 0.507813, 0.476562 )
-z_index = -2
+z_index = -4
 texture = ExtResource( 9 )
 flip_h = true
 
 [node name="Cactus2" type="Sprite" parent="."]
 position = Vector2( 295, 109 )
-z_index = -2
+z_index = -4
 texture = ExtResource( 9 )
 offset = Vector2( 66, -9 )
 
 [node name="Cactus3" type="Sprite" parent="."]
 position = Vector2( 739, 106 )
 scale = Vector2( 0.773438, 0.765625 )
-z_index = -2
+z_index = -4
 texture = ExtResource( 9 )
 offset = Vector2( -7.75775, 0 )
 flip_h = true
@@ -137,7 +137,7 @@ flip_h = true
 [node name="Cactus5" type="Sprite" parent="."]
 position = Vector2( 1430, 136 )
 scale = Vector2( 0.79349, 0.77754 )
-z_index = -2
+z_index = -4
 texture = ExtResource( 9 )
 offset = Vector2( -7.75775, 0 )
 flip_h = true
@@ -145,7 +145,7 @@ flip_h = true
 [node name="CactusCowboyHat" type="Sprite" parent="."]
 position = Vector2( 1006, 122 )
 scale = Vector2( 0.859375, 0.84375 )
-z_index = -2
+z_index = -4
 texture = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -162,21 +162,27 @@ tile_data = PoolIntArray( 196624, 2, 0, 196625, 3, 0, 196626, 12, 0, 262152, 5, 
 
 [node name="Platform20" parent="." instance=ExtResource( 4 )]
 position = Vector2( 976, 154 )
+z_index = -2
 
 [node name="Platform21" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1031, 154 )
+z_index = -2
 
 [node name="Platform22" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1128, 118 )
+z_index = -2
 
 [node name="Platform24" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1223, 118 )
+z_index = -2
 
 [node name="Platform25" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1315, 154 )
+z_index = -2
 
 [node name="Platform26" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1752, 180 )
+z_index = -2
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 651, 111 )

@@ -104,5 +104,6 @@ script = ExtResource( 3 )
 [node name="EnemyShoot" type="AudioStreamPlayer" parent="Position2D"]
 stream = ExtResource( 7 )
 volume_db = -14.857
+bus = "SFX"
 
 [connection signal="area_entered" from="EnemyHitbox" to="." method="_on_Area2D_area_entered"]

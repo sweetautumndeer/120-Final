@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://LevelAssets/Carnevalee Freakshow.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://LevelScenes/Pause.gd" type="Script" id=2]
 [ext_resource path="res://LevelScenes/Options.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/SFX/MenuHover.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/SFX/MenuClick.ogg" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -52,6 +54,19 @@ margin_bottom = -6.0
 custom_fonts/font = SubResource( 2 )
 text = "Paused"
 
+[node name="MenuHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -16.612
+bus = "SFX"
+
+[node name="MenuClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -13.109
+bus = "SFX"
+
+[connection signal="mouse_entered" from="ResumeButton" to="." method="_on_ResumeButton_mouse_entered"]
 [connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_OptionsButton_mouse_entered"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="mouse_entered" from="MainMenuButton" to="." method="_on_MainMenuButton_mouse_entered"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

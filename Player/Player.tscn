@@ -153,6 +153,7 @@ bus = "SFX"
 [node name="PlayerHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 volume_db = -9.613
+bus = "SFX"
 
 [node name="Footsteps" type="Node" parent="."]
 

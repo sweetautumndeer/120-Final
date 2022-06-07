@@ -70,6 +70,7 @@ position = Vector2( 1, 19 )
 stream = ExtResource( 9 )
 volume_db = -16.605
 autoplay = true
+bus = "Music"
 
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_PlayButton_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
