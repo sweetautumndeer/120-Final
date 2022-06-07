@@ -40,8 +40,27 @@ func _ready():
 	
 
 func playFootsteps():
+	var rand = randi() % 8
+	
 	if not footstepSFXPlayed and is_on_floor():
-		$"Footsteps/Footsteps".play()
+		match (rand):
+			0:
+				$"Footsteps/Footsteps".play()
+			1:
+				$"Footsteps/Footsteps2".play()
+			2:
+				$"Footsteps/Footsteps3".play()
+			3:
+				$"Footsteps/Footsteps4".play()
+			4:
+				$"Footsteps/Footsteps5".play()
+			5:
+				$"Footsteps/Footsteps6".play()
+			6:
+				$"Footsteps/Footsteps7".play()
+			7:
+				$"Footsteps/Footsteps8".play()
+		
 		footstepSFXPlayed = true
 
 func _physics_process(delta):
