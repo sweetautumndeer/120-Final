@@ -5,6 +5,7 @@ extends Position2D
 # var a = 2
 # var b = "text"
 var bullet = preload("res://Enemies/EnemyBullet.tscn")
+onready var enemyShootSFX = get_node("EnemyShoot")
 onready var player = get_node("../../Player");
 var can_fire = true;
 
@@ -20,6 +21,8 @@ func _physics_process(delta):
 	if player != null:
 		look_at(player.get_position())
 		if can_fire && player.position.x - $"..".position.x > -1 * get_viewport().size.x / 6 && $"..".position.x - player.position.x < get_viewport().size.x / 6:
+			enemyShootSFX.play()
+			
 			var bullet_instance = bullet.instance()
 			bullet_instance.rotation = rotation
 			

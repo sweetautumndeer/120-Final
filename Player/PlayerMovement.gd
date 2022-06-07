@@ -16,6 +16,7 @@ onready var hitflash = $HitflashAnimation
 onready var sprite = $AnimatedSprite
 onready var jumpSFX = $Jump
 onready var landSFX = $Land
+onready var playerHitSFX = $PlayerHit
 onready var healthbar = get_node("../CanvasLayer/PlayerHealthBar/ProgressBar")
 onready var transition = get_node("../CanvasLayer/TransitionScreen/AnimationPlayer")
 onready var screen = get_node("../CanvasLayer/TransitionScreen")
@@ -121,6 +122,7 @@ func _on_Area2D_area_entered(area):
 	print(area.name == "Portal")
 	if area.name == "Portal":
 		return
+	playerHitSFX.play()
 	health -= 1
 	if healthbar != null:
 		healthbar.value = health

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://LevelAssets/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Cowboy.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/SFX/Jump.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Assets/SFX/Land.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Assets/SFX/Footstep1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Assets/SFX/PlayerHit.ogg" type="AudioStream" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -141,6 +142,10 @@ bus = "SFX"
 stream = ExtResource( 13 )
 volume_db = -13.109
 bus = "SFX"
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -9.613
 
 [node name="Footsteps" type="Node" parent="."]
 
