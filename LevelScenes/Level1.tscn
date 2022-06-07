@@ -51,10 +51,6 @@ position = Vector2( 1, -7 )
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2( 2000, 248 )
 
-[node name="Pause" parent="Camera2D" instance=ExtResource( 21 )]
-visible = false
-position = Vector2( -35, -20 )
-
 [node name="Tutorials" type="Node" parent="."]
 script = ExtResource( 18 )
 
@@ -206,15 +202,19 @@ layer = 35
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 19 )]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 22 )]
-visible = true
 margin_left = -127.0
 margin_top = -14.0
 margin_right = 2313.0
 margin_bottom = 288.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 21 )]
+visible = false
+position = Vector2( 126, 68 )
+
 [node name="Portal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1800.73, 66.4207 )
+position = Vector2( 1800.73, 67.85 )
+z_index = -4
 
 [connection signal="area_entered" from="Tutorials/JumpTutorialTrigger" to="Tutorials" method="_on_JumpTutorialTrigger_area_entered"]
 [connection signal="area_entered" from="Tutorials/ShootTutorialTrigger" to="Tutorials" method="_on_ShootTutorialTrigger_area_entered"]

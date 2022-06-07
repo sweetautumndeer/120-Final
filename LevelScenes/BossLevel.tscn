@@ -38,7 +38,7 @@ position = Vector2( 157, 50 )
 position = Vector2( -78.6868, -124.816 )
 
 [node name="ShootPosition" type="Position2D" parent="."]
-position = Vector2( 275, 40 )
+position = Vector2( 275, 50 )
 
 [node name="WallBounds" type="StaticBody2D" parent="."]
 collision_layer = 17
@@ -56,7 +56,6 @@ bus = "Music"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 8 )]
-visible = true
 color = Color( 0, 0, 0, 1 )
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
@@ -73,13 +72,13 @@ margin_bottom = -73.708
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BossHealthBar"]
 margin_left = -35.129
-margin_top = 120.708
+margin_top = 118.708
 margin_right = 138.871
-margin_bottom = 130.708
+margin_bottom = 128.708
 theme = ExtResource( 6 )
 value = 50.0
 percent_visible = false
 
-[node name="Pause" parent="." instance=ExtResource( 3 )]
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 136, 72 )
+position = Vector2( 126, 68 )

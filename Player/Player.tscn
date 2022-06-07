@@ -99,7 +99,7 @@ position = Vector2( 1.9885, 0.669006 )
 
 [node name="Gunshot" type="AudioStreamPlayer" parent="Gun"]
 stream = ExtResource( 11 )
-volume_db = -9.613
+volume_db = -15.731
 bus = "SFX"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

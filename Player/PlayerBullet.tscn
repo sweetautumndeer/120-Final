@@ -29,12 +29,12 @@ scale = Vector2( 0.124937, 0.0939188 )
 
 [node name="EnemyHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -13.983
+volume_db = -16.605
 bus = "SFX"
 
 [node name="GroundHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.487
+volume_db = -13.983
 bus = "SFX"
 
 [connection signal="area_entered" from="PlayerBulletHitbox" to="." method="_on_Hitbox_area_entered"]

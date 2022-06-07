@@ -15,6 +15,7 @@ var format_string = "Health = %d"
 onready var trashShot = $TrashShot
 onready var hurtbox = get_node("BossHurtbox")
 onready var bossHealthbar = get_node("../CanvasLayer/BossHealthBar/ProgressBar")
+onready var playerHealthbar = get_node("../CanvasLayer/PlayerHealthBar")
 onready var hitboxCheck = $BossHitbox/CollisionShape2D
 onready var areaCheck = $Node2D/Area2D/CollisionShape2D
 onready var collisionshape = $CollisionShape2D
@@ -23,6 +24,8 @@ onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
 onready var player = get_node("../Player")
 onready var hitflash = $AnimationPlayer
+onready var transition = get_node("../CanvasLayer/TransitionScreen/AnimationPlayer")
+onready var screen = get_node("../CanvasLayer/TransitionScreen")
 var bullet = preload("res://Enemies/Boss/TrashShot.tscn")
 var initialScale
 enum bossState {
@@ -151,15 +154,20 @@ func _on_HitBox_area_entered(area):
 		hitflash.play("Start")
 		#$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
-			#sprite.visible = true
+			# play death sound
 			$DeathSound.play()
-			#$DeathParticles.emitting = true
+			# disable hitbox/hurtbox
 			hurtbox.queue_free()
 			areaCheck.set_deferred("disabled", true)
 			hitboxCheck.set_deferred("disabled", true)
 			collisionshape.set_deferred("disabled", true)
 			currentState = bossState.DEATH
 			t = 0
-			yield(get_tree().create_timer(6), "timeout")
+			yield(get_tree().create_timer(3.5), "timeout")
+			# fade to black
+			screen.visible = true
+			playerHealthbar.visible = false
+			transition.play("fade")
+			yield(transition, "animation_finished")
 			get_tree().change_scene("res://LevelScenes/WinScreen.tscn")
 			
