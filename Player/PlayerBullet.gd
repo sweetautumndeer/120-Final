@@ -29,6 +29,7 @@ func _on_Hitbox_area_entered(area):
 	hitEnemy = true
 	print("enemyhit")
 	
+	
 	print(area.name)
 	#plays sound effect
 	if area.name == "BossHitbox" or area.name == "EnemyHitbox":
@@ -42,7 +43,11 @@ func _on_Hitbox_area_entered(area):
 	queue_free()
 
 
+
+
+
 func _on_PlayerBulletHitbox_body_entered(body):
+	
 	$PlayerBulletHitbox.queue_free()
 	$Sprite.visible = false
 	$GroundHit.play()

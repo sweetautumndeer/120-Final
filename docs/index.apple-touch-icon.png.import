@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BurningTrash4.png-2a2c933be662297db75f847e213d344b.stex"
+path="res://.import/index.apple-touch-icon.png-b21a756d869f84af832970a74d8371bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BurningTrash4.png"
-dest_files=[ "res://.import/BurningTrash4.png-2a2c933be662297db75f847e213d344b.stex" ]
+source_file="res://docs/index.apple-touch-icon.png"
+dest_files=[ "res://.import/index.apple-touch-icon.png-b21a756d869f84af832970a74d8371bc.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
