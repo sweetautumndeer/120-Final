@@ -208,6 +208,7 @@ layer = 35
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 19 )]
 
 [node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 22 )]
+visible = true
 margin_left = -127.0
 margin_top = -14.0
 margin_right = 2313.0
