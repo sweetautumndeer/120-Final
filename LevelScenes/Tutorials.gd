@@ -19,6 +19,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+#plays tutorials based on if player has reached input, then delete tutorial based on timer
 func _process(delta):
 	if jumpTutorialTriggered:
 		jumpTutorialTimer += delta
@@ -40,7 +41,7 @@ func _process(delta):
 		if movementTutorialTimer > tutorialMaxTime and Input.is_action_just_pressed("right"):
 			MovementD.visible = false
 
-
+#sets visibility of tutorials
 func _on_JumpTutorialTrigger_area_entered(area):
 	if not jumpTutorialTriggered:
 		JumpW.visible = true

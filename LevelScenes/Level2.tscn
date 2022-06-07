@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=1]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=2]
@@ -10,57 +10,191 @@
 [ext_resource path="res://white_shader.gdshader" type="Shader" id=8]
 [ext_resource path="res://Enemies/EnemyMinigun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://LevelScenes/Level2.gd" type="Script" id=10]
-[ext_resource path="res://LevelAssets/BossPortal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://LevelAssets/Portal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/boss_sign.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Cactus.png" type="Texture" id=14]
+[ext_resource path="res://Assets/CactusCowboyHat.png" type="Texture" id=15]
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://LevelScenes/Pause.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/Concepts.ogg" type="AudioStream" id=18]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/active = false
 
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="Level2" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 136, 94 )
+position = Vector2( 138, 105 )
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
 position = Vector2( -13.9196, -45.4502 )
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
-position = Vector2( 1209.74, 279.386 )
+position = Vector2( 2000, 279.386 )
+
+[node name="BossSign" type="Sprite" parent="."]
+position = Vector2( 1750, 64.5 )
+scale = Vector2( 0.640625, 0.609375 )
+z_index = -2
+texture = ExtResource( 13 )
+
+[node name="Cactus" type="Sprite" parent="."]
+position = Vector2( 48, 97 )
+z_index = -3
+texture = ExtResource( 14 )
+
+[node name="Cactus2" type="Sprite" parent="."]
+position = Vector2( 310.5, 46.5 )
+scale = Vector2( 0.734375, 0.734375 )
+z_index = -3
+texture = ExtResource( 14 )
+flip_h = true
+
+[node name="Cactus3" type="Sprite" parent="."]
+position = Vector2( 1100, 40 )
+scale = Vector2( 0.734375, 0.703125 )
+z_index = -3
+texture = ExtResource( 14 )
+offset = Vector2( 0.000366211, 9.95555 )
+
+[node name="Cactus4" type="Sprite" parent="."]
+position = Vector2( 1344, 72 )
+scale = Vector2( 0.707156, 0.667847 )
+z_index = -3
+texture = ExtResource( 14 )
+offset = Vector2( 0.000366211, 9.95555 )
+flip_h = true
+
+[node name="CactusCowboyHat" type="Sprite" parent="."]
+position = Vector2( 844, 8 )
+z_index = -3
+texture = ExtResource( 15 )
 
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
+z_index = -2
 collision_mask = 3
-tile_data = PoolIntArray( 65560, 2, 0, 65561, 3, 0, 65562, 4, 0, 65563, 3, 0, 65564, 11, 0, 65565, 12, 0, 131080, 2, 0, 131081, 11, 0, 131082, 12, 0, 131096, 14, 0, 131097, 15, 0, 131098, 14, 0, 131099, 16, 0, 131100, 15, 0, 131101, 16, 0, 196615, 2, 0, 196616, 3, 0, 196617, 4, 0, 196618, 11, 0, 196632, 20, 0, 196633, 20, 0, 196634, 19, 0, 196635, 18, 0, 196636, 20, 0, 196637, 20, 0, 262144, 13, 0, 262145, 14, 0, 262146, 15, 0, 262147, 16, 0, 262148, 14, 0, 262149, 15, 0, 262150, 16, 0, 262151, 14, 0, 262152, 15, 0, 262153, 16, 0, 262154, 14, 0, 262168, 23, 0, 262169, 23, 0, 262170, 23, 0, 262171, 23, 0, 262172, 23, 0, 262173, 23, 0, 327680, 18, 0, 327681, 19, 0, 327682, 20, 0, 327683, 21, 0, 327684, 20, 0, 327685, 19, 0, 327686, 18, 0, 327687, 19, 0, 327688, 20, 0, 327689, 18, 0, 327690, 20, 0, 327704, 23, 0, 327705, 23, 0, 327706, 23, 0, 327707, 23, 0, 327708, 23, 0, 327709, 23, 0, 393216, 23, 0, 393217, 23, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 23, 0, 393223, 23, 0, 393224, 23, 0, 393225, 23, 0, 393226, 23, 0, 393240, 23, 0, 393241, 23, 0, 393242, 23, 0, 393243, 23, 0, 393244, 23, 0, 393245, 23, 0, 458776, 23, 0, 458777, 23, 0, 458778, 23, 0, 458779, 23, 0, 458780, 23, 0, 458781, 23, 0 )
+tile_data = PoolIntArray( 65560, 2, 0, 65561, 3, 0, 65562, 4, 0, 65563, 3, 0, 65564, 11, 0, 65565, 12, 0, 131080, 2, 0, 131081, 11, 0, 131082, 12, 0, 131096, 14, 0, 131097, 15, 0, 131098, 14, 0, 131099, 16, 0, 131100, 15, 0, 131101, 16, 0, 131105, 13, 0, 131106, 14, 0, 131107, 15, 0, 131108, 16, 0, 131109, 17, 0, 196615, 2, 0, 196616, 3, 0, 196617, 4, 0, 196618, 11, 0, 196632, 20, 0, 196633, 20, 0, 196634, 19, 0, 196635, 18, 0, 196636, 20, 0, 196637, 20, 0, 196641, 18, 0, 196642, 19, 0, 196643, 20, 0, 196644, 21, 0, 196645, 22, 0, 196648, 2, 0, 196649, 3, 0, 196650, 4, 0, 196651, 12, 0, 262144, 13, 0, 262145, 14, 0, 262146, 15, 0, 262147, 16, 0, 262148, 14, 0, 262149, 15, 0, 262150, 16, 0, 262151, 14, 0, 262152, 15, 0, 262153, 16, 0, 262154, 14, 0, 262168, 23, 0, 262169, 23, 0, 262170, 23, 0, 262171, 23, 0, 262172, 23, 0, 262173, 23, 0, 262177, 23, 0, 262178, 23, 0, 262179, 23, 0, 262180, 23, 0, 262181, 23, 0, 262184, 23, 0, 262185, 23, 0, 262186, 23, 0, 262187, 23, 0, 262190, 2, 0, 262191, 3, 0, 262192, 4, 0, 262193, 11, 0, 262194, 12, 0, 327680, 18, 0, 327681, 19, 0, 327682, 20, 0, 327683, 21, 0, 327684, 20, 0, 327685, 19, 0, 327686, 18, 0, 327687, 19, 0, 327688, 20, 0, 327689, 18, 0, 327690, 20, 0, 327704, 23, 0, 327705, 23, 0, 327706, 23, 0, 327707, 23, 0, 327708, 23, 0, 327709, 23, 0, 327713, 23, 0, 327714, 23, 0, 327715, 23, 0, 327716, 23, 0, 327717, 23, 0, 327720, 23, 0, 327721, 23, 0, 327722, 23, 0, 327723, 23, 0, 327726, 14, 0, 327727, 15, 0, 327728, 16, 0, 327729, 14, 0, 327730, 15, 0, 393216, 23, 0, 393217, 23, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 23, 0, 393223, 23, 0, 393224, 23, 0, 393225, 23, 0, 393226, 23, 0, 393240, 23, 0, 393241, 23, 0, 393242, 23, 0, 393243, 23, 0, 393244, 23, 0, 393245, 23, 0, 393249, 23, 0, 393250, 23, 0, 393251, 23, 0, 393252, 23, 0, 393253, 23, 0, 393256, 23, 0, 393257, 23, 0, 393258, 23, 0, 393259, 23, 0, 393262, 20, 0, 393263, 19, 0, 393264, 18, 0, 393265, 19, 0, 393266, 20, 0, 458752, 23, 0, 458753, 23, 0, 458754, 23, 0, 458755, 23, 0, 458756, 23, 0, 458757, 23, 0, 458758, 23, 0, 458759, 23, 0, 458760, 23, 0, 458761, 23, 0, 458762, 23, 0, 458776, 23, 0, 458777, 23, 0, 458778, 23, 0, 458779, 23, 0, 458780, 23, 0, 458781, 23, 0, 458785, 23, 0, 458786, 23, 0, 458787, 23, 0, 458788, 23, 0, 458789, 23, 0, 458792, 23, 0, 458793, 23, 0, 458794, 23, 0, 458795, 23, 0, 458798, 23, 0, 458799, 23, 0, 458800, 23, 0, 458801, 23, 0, 458802, 23, 0, 524288, 23, 0, 524289, 23, 0, 524290, 23, 0, 524291, 23, 0, 524292, 23, 0, 524293, 23, 0, 524294, 23, 0, 524295, 23, 0, 524296, 23, 0, 524297, 23, 0, 524298, 23, 0, 524312, 23, 0, 524313, 23, 0, 524314, 23, 0, 524315, 23, 0, 524316, 23, 0, 524317, 23, 0, 524321, 23, 0, 524322, 23, 0, 524323, 23, 0, 524324, 23, 0, 524325, 23, 0, 524328, 23, 0, 524329, 23, 0, 524330, 23, 0, 524331, 23, 0, 524334, 23, 0, 524335, 23, 0, 524336, 23, 0, 524337, 23, 0, 524338, 23, 0, 589824, 23, 0, 589825, 23, 0, 589826, 23, 0, 589827, 23, 0, 589828, 23, 0, 589829, 23, 0, 589830, 23, 0, 589831, 23, 0, 589832, 23, 0, 589833, 23, 0, 589834, 23, 0, 589848, 23, 0, 589849, 23, 0, 589850, 23, 0, 589851, 23, 0, 589852, 23, 0, 589853, 23, 0, 589857, 23, 0, 589858, 23, 0, 589859, 23, 0, 589860, 23, 0, 589861, 23, 0, 589864, 23, 0, 589865, 23, 0, 589866, 23, 0, 589867, 23, 0, 589870, 23, 0, 589871, 23, 0, 589872, 23, 0, 589873, 23, 0, 589874, 23, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 33.2277, 104.682 )
+position = Vector2( 58, 116 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-position = Vector2( 102.772, -10.682 )
+position = Vector2( 80, -11 )
 remote_path = NodePath("../../Camera2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 
+[node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 12 )]
+margin_left = -20.0
+margin_top = -82.0
+margin_right = 1239.0
+margin_bottom = 413.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 17 )]
+visible = false
+position = Vector2( 126, 68 )
+
 [node name="Platform" parent="." instance=ExtResource( 6 )]
 position = Vector2( 456, 107.949 )
+z_index = -2
 
 [node name="Platform2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 573, 102 )
+position = Vector2( 601, 92 )
+z_index = -2
 
 [node name="Platform3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 692, 70 )
+position = Vector2( 658, 92 )
+z_index = -2
+
+[node name="Platform4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1730, 92.5 )
+z_index = -2
+
+[node name="Platform5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1588, 55 )
+z_index = -2
+
+[node name="Platform6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1529, 77 )
+z_index = -2
+
+[node name="Enemy" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1523, 111 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1548, 49 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1198, 47 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1146, 47 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 16 )]
+position = Vector2( 949, 15 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1581, 27 )
 
 [node name="EnemySniper" parent="." instance=ExtResource( 7 )]
 position = Vector2( 457.313, 79 )
 
-[node name="AnimatedSprite" parent="EnemySniper" index="1"]
+[node name="AnimatedSprite" parent="EnemySniper" index="0"]
 material = SubResource( 1 )
 
+[node name="EnemySniper2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1713, 64 )
+
+[node name="AnimatedSprite" parent="EnemySniper2" index="0"]
+material = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="EnemySniper2" index="4"]
+root_node = NodePath("../../EnemySniper2")
+anims/Start = SubResource( 2 )
+anims/Stop = SubResource( 3 )
+
 [node name="EnemyMinigun" parent="." instance=ExtResource( 9 )]
-position = Vector2( 799, 15 )
+position = Vector2( 804, 14 )
+
+[node name="EnemyMinigun2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1520, 50 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -68,15 +202,22 @@ position = Vector2( 799, 15 )
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="level_background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -1554.34, 106.173 )
-scale = Vector2( 0.776322, 0.776321 )
+position = Vector2( -153, 75 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BossPortal" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1062.53, 86.1494 )
+[node name="Portal" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1713, 21 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -14.857
+autoplay = true
+bus = "Music"
 
 [editable path="Camera2D"]
 [editable path="EnemySniper"]
+[editable path="EnemySniper2"]

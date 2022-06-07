@@ -1,24 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Boss/Boss.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/level_background.png" type="Texture" id=3]
+[ext_resource path="res://LevelScenes/Pause.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Music/Boss.ogg" type="AudioStream" id=4]
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://LevelAssets/boss_health.tres" type="Theme" id=6]
+[ext_resource path="res://LevelScenes/BossLevel.gd" type="Script" id=7]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/scrapyard.png" type="Texture" id=9]
 
 [node name="Boss Level" type="Node2D"]
+script = ExtResource( 7 )
 
-[node name="LevelBackground" type="Sprite" parent="."]
-position = Vector2( 298, 83 )
-scale = Vector2( 0.5, 0.5 )
+[node name="Scrapyard" type="Sprite" parent="."]
+position = Vector2( 159, 89 )
+scale = Vector2( 0.236979, 0.236979 )
 z_index = -2
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 491.072, 11.6965, 1385.68, 405.654 )
-__meta__ = {
-"_edit_lock_": true
-}
+texture = ExtResource( 9 )
 
 [node name="FloorBounds" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -27,7 +26,7 @@ collision_layer = 3
 polygon = PoolVector2Array( 2.38709, 175.538, 5.92946, 176.194, 312.689, 176.666, 324.189, 180.012, 346.558, 173.45, 348.944, 189.555, 341.786, 194.626, -36.0731, 183.996 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 25.8356, 153.761 )
+position = Vector2( 33, 40 )
 
 [node name="Boss" parent="." instance=ExtResource( 2 )]
 position = Vector2( 235.969, 157.627 )
@@ -39,7 +38,7 @@ position = Vector2( 157, 50 )
 position = Vector2( -78.6868, -124.816 )
 
 [node name="ShootPosition" type="Position2D" parent="."]
-position = Vector2( 275, 40 )
+position = Vector2( 275, 50 )
 
 [node name="WallBounds" type="StaticBody2D" parent="."]
 collision_layer = 17
@@ -56,6 +55,9 @@ bus = "Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 8 )]
+color = Color( 0, 0, 0, 1 )
+
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
 margin_left = -0.259918
 margin_top = -2.94495
@@ -67,18 +69,16 @@ margin_left = 175.129
 margin_top = -113.708
 margin_right = 215.129
 margin_bottom = -73.708
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BossHealthBar"]
-margin_left = -105.529
-margin_top = 117.055
-margin_right = 68.4712
-margin_bottom = 127.055
+margin_left = -35.129
+margin_top = 118.708
+margin_right = 138.871
+margin_bottom = 128.708
 theme = ExtResource( 6 )
 value = 50.0
 percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 126, 68 )

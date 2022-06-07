@@ -5,12 +5,11 @@
 [ext_resource path="res://Assets/Concepts.ogg" type="AudioStream" id=3]
 [ext_resource path="res://LevelAssets/Platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://LevelAssets/Camera2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://LevelAssets/BossPortal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LevelAssets/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/level_background.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Cactus.png" type="Texture" id=9]
 [ext_resource path="res://Assets/CactusCowboyHat.png" type="Texture" id=10]
-[ext_resource path="res://Assets/boss_sign.png" type="Texture" id=11]
 [ext_resource path="res://Assets/TutorialKeyD.png" type="Texture" id=12]
 [ext_resource path="res://Assets/TutorialKeyW.png" type="Texture" id=13]
 [ext_resource path="res://Assets/TutorialSpaceKey.png" type="Texture" id=14]
@@ -21,6 +20,7 @@
 [ext_resource path="res://LevelAssets/PlayerHealthBar.tscn" type="PackedScene" id=19]
 [ext_resource path="res://LevelAssets/TileMap.tscn" type="PackedScene" id=20]
 [ext_resource path="res://LevelScenes/Pause.tscn" type="PackedScene" id=21]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 51.25 )
@@ -51,45 +51,41 @@ position = Vector2( 1, -7 )
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2( 2000, 248 )
 
-[node name="Pause" parent="Camera2D" instance=ExtResource( 21 )]
-visible = false
-position = Vector2( -35, -20 )
-
 [node name="Tutorials" type="Node" parent="."]
 script = ExtResource( 18 )
 
 [node name="MovementA" type="Sprite" parent="Tutorials"]
 position = Vector2( 39, 107 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 17 )
 
 [node name="MovementD" type="Sprite" parent="Tutorials"]
 position = Vector2( 76, 107 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 12 )
 
 [node name="JumpW" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 247, 92 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 13 )
 
 [node name="JumpSpace" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 303, 92 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 14 )
 
 [node name="ShootLeftClick" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 534, 52 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 16 )
 
 [node name="ShootArrowKeys" type="Sprite" parent="Tutorials"]
 visible = false
 position = Vector2( 586, 53 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 15 )
 
 [node name="JumpTutorialTrigger" type="Area2D" parent="Tutorials"]
@@ -114,22 +110,26 @@ shape = SubResource( 1 )
 [node name="Cactus" type="Sprite" parent="."]
 position = Vector2( 110, 138 )
 scale = Vector2( 0.734375, 0.734375 )
+z_index = -2
 texture = ExtResource( 9 )
 
 [node name="Cactus4" type="Sprite" parent="."]
 position = Vector2( 222, 147 )
 scale = Vector2( 0.507813, 0.476562 )
+z_index = -2
 texture = ExtResource( 9 )
 flip_h = true
 
 [node name="Cactus2" type="Sprite" parent="."]
 position = Vector2( 295, 109 )
+z_index = -2
 texture = ExtResource( 9 )
 offset = Vector2( 66, -9 )
 
 [node name="Cactus3" type="Sprite" parent="."]
 position = Vector2( 739, 106 )
 scale = Vector2( 0.773438, 0.765625 )
+z_index = -2
 texture = ExtResource( 9 )
 offset = Vector2( -7.75775, 0 )
 flip_h = true
@@ -137,6 +137,7 @@ flip_h = true
 [node name="Cactus5" type="Sprite" parent="."]
 position = Vector2( 1430, 136 )
 scale = Vector2( 0.79349, 0.77754 )
+z_index = -2
 texture = ExtResource( 9 )
 offset = Vector2( -7.75775, 0 )
 flip_h = true
@@ -144,12 +145,8 @@ flip_h = true
 [node name="CactusCowboyHat" type="Sprite" parent="."]
 position = Vector2( 1006, 122 )
 scale = Vector2( 0.859375, 0.84375 )
+z_index = -2
 texture = ExtResource( 10 )
-
-[node name="BossSign" type="Sprite" parent="."]
-position = Vector2( 1876, 115 )
-scale = Vector2( 0.40625, 0.421874 )
-texture = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 62, 147 )
@@ -159,7 +156,9 @@ position = Vector2( 99, -29 )
 remote_path = NodePath("../../Camera2D")
 
 [node name="TileMap" parent="." instance=ExtResource( 20 )]
+z_index = -2
 collision_mask = 3
+tile_data = PoolIntArray( 196624, 2, 0, 196625, 3, 0, 196626, 12, 0, 262152, 5, 0, 262153, 6, 0, 262154, 2, 0, 262155, 3, 0, 262156, 4, 0, 262157, 11, 0, 262158, 3, 0, 262159, 4, 0, 262160, 11, 0, 262161, 3, 0, 262162, 4, 0, 262163, 11, 0, 262164, 3, 0, 262165, 4, 0, 262166, 11, 0, 262167, 12, 0, 262202, 13, 0, 262203, 14, 0, 262204, 15, 0, 262205, 16, 0, 262206, 14, 0, 327680, 16, 0, 327681, 14, 0, 327682, 15, 0, 327683, 16, 0, 327684, 14, 0, 327685, 16, 0, 327686, 14, 0, 327687, 15, 0, 327688, 16, 0, 327689, 14, 0, 327690, 14, 0, 327691, 15, 0, 327692, 15, 0, 327693, 14, 0, 327694, 15, 0, 327695, 16, 0, 327696, 16, 0, 327697, 15, 0, 327698, 16, 0, 327699, 15, 0, 327700, 14, 0, 327701, 16, 0, 327702, 15, 0, 327703, 16, 0, 327704, 14, 0, 327705, 15, 0, 327706, 16, 0, 327707, 17, 0, 327723, 2, 0, 327724, 3, 0, 327725, 4, 0, 327726, 12, 0, 327738, 18, 0, 327739, 19, 0, 327740, 20, 0, 327741, 21, 0, 327742, 22, 0, 393216, 18, 0, 393217, 19, 0, 393218, 20, 0, 393219, 18, 0, 393220, 22, 0, 393221, 21, 0, 393222, 20, 0, 393223, 22, 0, 393224, 21, 0, 393225, 22, 0, 393226, 20, 0, 393227, 22, 0, 393228, 20, 0, 393229, 22, 0, 393230, 20, 0, 393231, 21, 0, 393232, 21, 0, 393233, 22, 0, 393234, 21, 0, 393235, 19, 0, 393236, 20, 0, 393237, 18, 0, 393238, 19, 0, 393239, 20, 0, 393240, 19, 0, 393241, 20, 0, 393242, 18, 0, 393243, 19, 0, 393259, 23, 0, 393260, 23, 0, 393261, 23, 0, 393262, 23, 0, 393265, 2, 0, 393266, 3, 0, 393267, 4, 0, 393268, 12, 0, 393274, 23, 0, 393275, 23, 0, 393276, 23, 0, 393277, 23, 0, 393278, 23, 0, 458752, 23, 0, 458753, 23, 0, 458754, 23, 0, 458755, 23, 0, 458756, 23, 0, 458757, 23, 0, 458758, 23, 0, 458759, 23, 0, 458760, 23, 0, 458761, 23, 0, 458762, 23, 0, 458763, 23, 0, 458764, 23, 0, 458765, 23, 0, 458766, 23, 0, 458767, 23, 0, 458768, 23, 0, 458769, 23, 0, 458770, 23, 0, 458771, 23, 0, 458772, 23, 0, 458773, 23, 0, 458774, 23, 0, 458775, 23, 0, 458776, 23, 0, 458777, 23, 0, 458778, 23, 0, 458779, 23, 0, 458795, 23, 0, 458796, 23, 0, 458797, 23, 0, 458798, 23, 0, 458801, 23, 0, 458802, 23, 0, 458803, 23, 0, 458804, 23, 0, 458810, 23, 0, 458811, 23, 0, 458812, 23, 0, 458813, 23, 0, 458814, 23, 0 )
 
 [node name="Platform20" parent="." instance=ExtResource( 4 )]
 position = Vector2( 976, 154 )
@@ -171,10 +170,10 @@ position = Vector2( 1031, 154 )
 position = Vector2( 1128, 118 )
 
 [node name="Platform24" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1223, 116 )
+position = Vector2( 1223, 118 )
 
 [node name="Platform25" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1315, 149 )
+position = Vector2( 1315, 154 )
 
 [node name="Platform26" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1752, 180 )
@@ -197,13 +196,25 @@ volume_db = -14.857
 autoplay = true
 bus = "Music"
 
-[node name="BossPortal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1957, 158 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 35
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource( 19 )]
+
+[node name="TransitionScreen" parent="CanvasLayer" instance=ExtResource( 22 )]
+margin_left = -127.0
+margin_top = -14.0
+margin_right = 2313.0
+margin_bottom = 288.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 21 )]
+visible = false
+position = Vector2( 126, 68 )
+
+[node name="Portal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1800.73, 67.85 )
+z_index = -4
 
 [connection signal="area_entered" from="Tutorials/JumpTutorialTrigger" to="Tutorials" method="_on_JumpTutorialTrigger_area_entered"]
 [connection signal="area_entered" from="Tutorials/ShootTutorialTrigger" to="Tutorials" method="_on_ShootTutorialTrigger_area_entered"]

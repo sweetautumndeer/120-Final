@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/bullet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/enemy_bullet.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/EnemyBullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -14,8 +14,8 @@ collision_mask = 9
 script = ExtResource( 2 )
 speed = -50
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5.41666, 1.66624 )
+[node name="EnemyBullet" type="Sprite" parent="."]
+position = Vector2( 3.347, 1.6416 )
 scale = Vector2( 0.433269, 0.433269 )
 texture = ExtResource( 1 )
 

@@ -15,14 +15,17 @@ var format_string = "Health = %d"
 onready var trashShot = $TrashShot
 onready var hurtbox = get_node("BossHurtbox")
 onready var bossHealthbar = get_node("../CanvasLayer/BossHealthBar/ProgressBar")
+onready var playerHealthbar = get_node("../CanvasLayer/PlayerHealthBar")
 onready var hitboxCheck = $BossHitbox/CollisionShape2D
 onready var areaCheck = $Node2D/Area2D/CollisionShape2D
 onready var collisionshape = $CollisionShape2D
-onready var sprite = get_node("Node2D/Boss")
+onready var sprite = get_node("AnimatedSprite")
 onready var idlePos = get_node("../IdlePosition")
 onready var shootPos = get_node("../ShootPosition")
 onready var player = get_node("../Player")
 onready var hitflash = $AnimationPlayer
+onready var transition = get_node("../CanvasLayer/TransitionScreen/AnimationPlayer")
+onready var screen = get_node("../CanvasLayer/TransitionScreen")
 var bullet = preload("res://Enemies/Boss/TrashShot.tscn")
 var initialScale
 enum bossState {
@@ -42,6 +45,7 @@ func _ready():
 	hitflash.play("Stop")
 	Global.currentCheckpoint = "Boss"
 	
+	#sets boss healthbar
 	bossHealthbar.max_value = BOSSHEALTH_MAX
 	bossHealthbar.value = BOSSHEALTH 
 
@@ -49,6 +53,7 @@ func _physics_process(delta):
 	#main state machine
 	match (currentState):
 		bossState.IDLE:
+			sprite.play("idle")
 			sprite.flip_h = false
 			hurtbox.monitorable = false
 			motion.x = 0
@@ -60,9 +65,13 @@ func _physics_process(delta):
 				hurtbox.monitorable = true
 				position = idlePos.position
 		bossState.TRASHSHOT:
+			#sprite.play("attack")
+			#sprite.play("attacking")
 			hurtbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
+			
+			#move to shooting position
 			position.x = lerp(position.x, shootPos.position.x, WEIGHT)
 			position.y = lerp(position.y, shootPos.position.y, WEIGHT)
 			if nearPosition(position, shootPos.position):
@@ -78,7 +87,9 @@ func _physics_process(delta):
 				trashShot.play()
 				var bullet_instance = bullet.instance()
 				bullet_instance.rotation = rotation
-		
+				if BOSSHEALTH <= 50:
+					bullet_instance.speed = 300
+				sprite.play("attacking")
 				#creates instance at gun position
 				bullet_instance.global_position = $".".global_position
 				get_parent().add_child(bullet_instance)
@@ -88,8 +99,10 @@ func _physics_process(delta):
 				yield(get_tree().create_timer(2.5), "timeout")
 				can_fire = true;
 		bossState.SWEEP:
+			#plays sweep animation
+			sprite.play("sweep")
 			
-				
+			#moves boss back and forth between two walls
 			rotation = lerp(rotation, 0, WEIGHT)
 			motion.x += -SPEED * delta
 			print(motion.x)
@@ -100,6 +113,7 @@ func _physics_process(delta):
 			pass
 		
 		bossState.DEATH:
+			#plays death animation
 			if not is_on_wall():
 				motion.y += SPEED * delta
 				rotation_degrees += 10
@@ -112,6 +126,8 @@ func _process(delta):
 	if (currentState == bossState.IDLE && t > 2):
 		#randomly choose next attack
 		var rand = randi() % 2
+		if BOSSHEALTH <= 50:
+			MAX_SPEED = MAX_SPEED * 2
 		match (rand):
 			0:
 				currentState = bossState.SWEEP
@@ -129,6 +145,7 @@ func nearPosition(pos1, pos2):
 	return pos1.x < pos2.x + 0.01 && pos1.x > pos2.x - 0.01 && pos1.y < pos2.y + 0.01 && pos1.y > pos2.y - 0.01
 
 func _on_Area2D_body_entered(body):
+	#flips sprite and direction if bouncing into a wall
 	if body.name == "WallBounds":
 		sprite.flip_h = not sprite.flip_h
 		SPEED = -SPEED
@@ -138,21 +155,32 @@ func _on_Area2D_body_entered(body):
 
 func _on_HitBox_area_entered(area):
 	print("collision")
+	#loses health if hit by bullet
 	if area.name == "PlayerBulletHitbox":
 		BOSSHEALTH -= 1
+		
+		#changes health bar
 		bossHealthbar.value = BOSSHEALTH
+		
+		#plays hitflash animation
 		hitflash.play("Start")
+		
 		#$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
-			#sprite.visible = true
+			# play death sound
 			$DeathSound.play()
-			#$DeathParticles.emitting = true
+			# disable hitbox/hurtbox
 			hurtbox.queue_free()
 			areaCheck.set_deferred("disabled", true)
 			hitboxCheck.set_deferred("disabled", true)
 			collisionshape.set_deferred("disabled", true)
 			currentState = bossState.DEATH
 			t = 0
-			yield(get_tree().create_timer(6), "timeout")
+			yield(get_tree().create_timer(3.5), "timeout")
+			# fade to black
+			screen.visible = true
+			playerHealthbar.visible = false
+			transition.play("fade")
+			yield(transition, "animation_finished")
 			get_tree().change_scene("res://LevelScenes/WinScreen.tscn")
 			

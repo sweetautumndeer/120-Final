@@ -19,7 +19,7 @@ func _physics_process(_delta):
 	yield(get_tree().create_timer(0.01), "timeout")
 	set_physics_process(false)
 
-
+#delete if off screen
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
@@ -30,6 +30,7 @@ func _on_Hitbox_area_entered(area):
 	print("enemyhit")
 	
 	print(area.name)
+	#plays sound effect
 	if area.name == "BossHitbox" or area.name == "EnemyHitbox":
 		enemyHit.pitch_scale = randf() * .5 + .75 #range .75 - 1.25
 		enemyHit.play()

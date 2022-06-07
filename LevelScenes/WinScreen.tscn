@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://LevelScenes/WinScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/win_screen.png" type="Texture" id=2]
 [ext_resource path="res://LevelAssets/Carnevalee Freakshow.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/Music/WinJingle.ogg" type="AudioStream" id=4]
+[ext_resource path="res://LevelAssets/TransitionScreen.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
@@ -45,3 +46,7 @@ text = "Any Key to continue"
 stream = ExtResource( 4 )
 autoplay = true
 bus = "Music"
+
+[node name="TransitionScreen" parent="." instance=ExtResource( 5 )]
+visible = true
+color = Color( 0, 0, 0, 1 )

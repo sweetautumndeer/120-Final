@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 
 export var speed = 225
@@ -20,7 +20,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 
-
+#deletes when entering a body
 func _on_Area2D_body_entered(body):
 	queue_free()
 
