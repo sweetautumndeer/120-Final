@@ -13,6 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#brings up option menu and pauses or leaves and resumes
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
 			if $OptionsMenu.visible:
@@ -24,16 +25,16 @@ func _process(delta):
 			visible = true
 			get_tree().paused = true
 
-
+#displays options menu
 func _on_OptionsButton_pressed():
 	$OptionsMenu.visible = true
 
-
+#pauses screen
 func _on_MainMenuButton_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://LevelScenes/MainMenu.tscn")
 
-
+#unpauses screen
 func _on_ResumeButton_pressed():
 	visible = false
 	get_tree().paused = false

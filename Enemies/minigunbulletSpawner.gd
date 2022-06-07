@@ -22,7 +22,7 @@ func _physics_process(delta):
 		
 		if can_fire && player.position.x - $"..".position.x > -1 * get_viewport().size.x / 6 && $"..".position.x - player.position.x < get_viewport().size.x / 6:
 			enemyShootSFX.play()
-			
+			#sets up bullet instance
 			var bullet_instance = bullet.instance()
 			bullet_instance.rotation = rotation
 			bullet_instance.speed = 500

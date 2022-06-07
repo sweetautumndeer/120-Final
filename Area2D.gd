@@ -17,7 +17,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
+#plays screen transition and changes to next level based on global variables
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		screen.visible = true

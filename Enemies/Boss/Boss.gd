@@ -45,6 +45,7 @@ func _ready():
 	hitflash.play("Stop")
 	Global.currentCheckpoint = "Boss"
 	
+	#sets boss healthbar
 	bossHealthbar.max_value = BOSSHEALTH_MAX
 	bossHealthbar.value = BOSSHEALTH 
 
@@ -69,6 +70,8 @@ func _physics_process(delta):
 			hurtbox.monitorable = false
 			motion.x = 0
 			motion.y = 0
+			
+			#move to shooting position
 			position.x = lerp(position.x, shootPos.position.x, WEIGHT)
 			position.y = lerp(position.y, shootPos.position.y, WEIGHT)
 			if nearPosition(position, shootPos.position):
@@ -96,8 +99,10 @@ func _physics_process(delta):
 				yield(get_tree().create_timer(2.5), "timeout")
 				can_fire = true;
 		bossState.SWEEP:
+			#plays sweep animation
 			sprite.play("sweep")
-				
+			
+			#moves boss back and forth between two walls
 			rotation = lerp(rotation, 0, WEIGHT)
 			motion.x += -SPEED * delta
 			print(motion.x)
@@ -108,6 +113,7 @@ func _physics_process(delta):
 			pass
 		
 		bossState.DEATH:
+			#plays death animation
 			if not is_on_wall():
 				motion.y += SPEED * delta
 				rotation_degrees += 10
@@ -139,6 +145,7 @@ func nearPosition(pos1, pos2):
 	return pos1.x < pos2.x + 0.01 && pos1.x > pos2.x - 0.01 && pos1.y < pos2.y + 0.01 && pos1.y > pos2.y - 0.01
 
 func _on_Area2D_body_entered(body):
+	#flips sprite and direction if bouncing into a wall
 	if body.name == "WallBounds":
 		sprite.flip_h = not sprite.flip_h
 		SPEED = -SPEED
@@ -148,10 +155,16 @@ func _on_Area2D_body_entered(body):
 
 func _on_HitBox_area_entered(area):
 	print("collision")
+	#loses health if hit by bullet
 	if area.name == "PlayerBulletHitbox":
 		BOSSHEALTH -= 1
+		
+		#changes health bar
 		bossHealthbar.value = BOSSHEALTH
+		
+		#plays hitflash animation
 		hitflash.play("Start")
+		
 		#$Health.text = format_string % BOSSHEALTH
 		if BOSSHEALTH <= 0:
 			# play death sound

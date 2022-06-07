@@ -61,6 +61,7 @@ func _physics_process(delta):
 		else:
 			get_node(".").set_flip_v(false)
 	
+	#can also shoot using arrow keys
 	if Input.is_action_pressed("arrow_down") and Input.is_action_pressed("arrow_right"):
 		using_mouse = false
 		flip_v = false

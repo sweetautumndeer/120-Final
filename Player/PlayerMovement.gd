@@ -33,13 +33,14 @@ func _ready():
 	
 	get_node("CollisionShape2D")
 	hitflash.play("Stop")
-#	$Health.text = format_string % health
+#	formats health bar
 	if healthbar != null:
 		healthbar.max_value = max_health
 		healthbar.value = health
 	
 
 func playFootsteps():
+	#plays randomized footstep sounds
 	var rand = randi() % 8
 	
 	if not footstepSFXPlayed and is_on_floor():
@@ -67,6 +68,7 @@ func _physics_process(delta):
 	#moves player based on input strength
 	var x_in = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
+	#sets sprite animation based on input
 	if x_in == -1:
 		sprite.set_flip_h(true)
 		sprite.play("run")
@@ -95,7 +97,7 @@ func _physics_process(delta):
 	#falls at gravity * delta speed
 	motion.y += GRAVITY * delta
 	
-	#jumps if player is on floor
+	#jumps if player is on floor and plays sfx
 	if is_on_floor():
 		can_gunjump = true
 		if jumped:
@@ -108,6 +110,7 @@ func _physics_process(delta):
 	else:
 		jumped = true
 	
+	#jumps based on how long button is held
 	if Input.is_action_just_released("jump") && motion.y < 0:
 		motion.y = clamp(motion.y/3, -JUMP_FORCE/2, 0)
 	
@@ -138,15 +141,19 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Area2D_area_entered(area):
 	print(area.name)
+	
+	#if lands on portal, ignores
 	print(area.name == "Portal")
 	if area.name == "Portal":
 		return
+		
+	#otherwise, health is depleted and health bar adjusted
 	playerHitSFX.play()
 	health -= 1
 	if healthbar != null:
 		healthbar.value = health
 
-	
+	#plays hitflash animation and bumps player back
 	hitflash.play("Start")
 	if area.position.x > position.x:
 		motion.x -= 300
@@ -155,7 +162,7 @@ func _on_Area2D_area_entered(area):
 		motion.x += 300
 		motion.y -= 100
 	
-	#$Health.text = format_string % health
+	#changes to game over screen
 	if health == 0:
 		print("game over")
 		sprite.visible = false

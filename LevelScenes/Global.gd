@@ -5,6 +5,7 @@ extends Node
 # var a = 2
 # var b = "text"
 
+#global variables
 var currentCheckpoint = "Level1"
 var currentRespawn = Vector2(50.0, 100.0)
 

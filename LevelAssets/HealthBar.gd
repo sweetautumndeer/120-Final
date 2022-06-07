@@ -7,5 +7,5 @@ onready var bar = $ProgressBar
 
 func _ready():
 	var player = get_node("../../Player")
-	max_heal
+	#max_heal
 	

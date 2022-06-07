@@ -9,6 +9,8 @@ onready var screen = $CanvasLayer/TransitionScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	#sets global checkpoint and plays transition
 	Global.currentCheckpoint = "Level2"
 	Global.currentRespawn = Vector2(100,100)
 	transition.play_backwards("fade")

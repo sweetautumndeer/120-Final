@@ -10,6 +10,8 @@ onready var screen = $CanvasLayer/TransitionScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	#plays screen transition
 	transition.play_backwards("fade")
 	yield(transition, "animation_finished")
 	screen.visible = false

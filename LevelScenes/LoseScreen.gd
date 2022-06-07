@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	pass
 
-
+#respawn player at start of level based on global checkpoint
 func _on_RetryButton_pressed():
 	if Global.currentCheckpoint == "Level1":
 		get_tree().change_scene("res://LevelScenes/Level1.tscn")
@@ -26,6 +26,6 @@ func _on_RetryButton_pressed():
 	if Global.currentCheckpoint == "Boss":
 		get_tree().change_scene("res://LevelScenes/BossLevel.tscn")
 
-
+#changes to main menu
 func _on_MainMenuButton_pressed():
 	get_tree().change_scene("res://LevelScenes/MainMenu.tscn")
